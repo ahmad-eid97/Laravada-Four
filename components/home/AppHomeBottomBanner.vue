@@ -1,0 +1,107 @@
+<template>
+    <div class="bottom-banner">
+       <div class="row m-0 justify-content-between align-items-center">
+           <div class="col-lg-auto">
+               <div class="title">
+                   <h2>THE CLOUD</h2>
+                    <h4>IS IN OUR DNA<span>.</span></h4>
+               </div>
+           </div>
+           <div class="col-lg-auto mt-5">
+               <div class="content">
+                   <a href="#" class="btn">GET STARTED</a>
+               </div>
+           </div>
+       </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'AppHomeBottomBanner',
+    data() {
+        return {
+
+        }
+    }
+}
+</script>
+<style lang="scss">
+    .bottom-banner {
+        background-color: rgb(98, 57, 189);
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/avada-it-call-to-action-bg.png");
+        padding-bottom: 90px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 90px;
+    }
+    .bottom-banner .title {
+        margin: 15px 0;
+        border-left: 12px solid #74c5da;
+        padding: 0 30px;
+    }
+    .bottom-banner .title h2{
+        color: rgb(255, 255, 255);
+        flex-grow: 0;
+        font-family: Teko;
+        font-size: 124px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 124px;
+    }
+
+    .bottom-banner .title h4{
+        color: rgb(255, 255, 255);
+        flex-grow: 0;
+        font-family: Teko;
+        font-size: 65px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 65px;
+    }
+    .bottom-banner .title h4 span{
+        color: rgb(116, 197, 218);
+    }
+
+    @include xs {
+        .bottom-banner .title h2{
+            font-size: 70px;
+            line-height: 80px;
+        }
+
+        .bottom-banner .title h4{
+            font-size: 45px;
+            line-height: 60px;
+        }
+    }
+
+    .bottom-banner .btn {
+        border-radius: 25px 25px 25px 25px;
+        padding-bottom: 17px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 17px;
+        font-weight: 500;
+        justify-content: center;
+        letter-spacing: 2px;
+        font-size: 18px;
+        background-color: rgb(255, 255, 255);
+        color:#000;
+        line-height: 17px;
+        min-width: 200px;
+        text-transform: uppercase;
+        font-family: 'Roboto';
+        border: none;
+    }
+    .bottom-banner .btn:hover {
+        justify-content: center;
+        color: rgb(255, 255, 255);
+        background-color:var(--main-color);
+        border: none;
+    }
+</style>
