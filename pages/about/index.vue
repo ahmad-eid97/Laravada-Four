@@ -43,6 +43,7 @@ export default {
     const ABOUT_DETAILS = await $axios.get('/pages/1');
 
     if (ABOUT_DETAILS.success) aboutDetails = ABOUT_DETAILS.data.data
+    console.log(ABOUT_DETAILS.data.data)
 
     return {
       aboutDetails

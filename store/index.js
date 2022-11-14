@@ -9,7 +9,6 @@ export default () => {
     mutations: {
       getFooterLinks(state, data) {
         state.footerLinks = data
-        // console.log(data.data)
       }
     },
     actions: {
