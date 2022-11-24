@@ -1,7 +1,7 @@
 <template>
     <div class="blog-article">
         <div class="blog-article-img">
-            <img src="/assets/images/blog-details.jpg" alt="Images">
+            <img :src="blogDetails.image" alt="Images">
             <div class="blog-article-tag">
                 <h3>04</h3>
                 <span>Nov</span>
@@ -25,7 +25,8 @@
             <h2>10 Ways to Get Efficient Result and Benefits</h2>
         </div>
         <div class="article-content">
-            <p>
+            <p>{{blogDetails.description}}</p>
+            <!-- <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. cu
             sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies ne,
             pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet n,
@@ -59,7 +60,7 @@
             <p>
             It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
             making it look like readable English.
-            </p>
+            </p> -->
         </div>
         <div class="blog-article-share">
             <div class="row align-items-center">
@@ -101,41 +102,17 @@
         </div>
         <div class="comments-wrap">
             <div class="comment-title">
-                <h3 class="title">Comments (02)</h3>
+                <h3 class="title">Comments ({{blogDetails.comments.length}})</h3>
             </div>
             <ul class="comment-list">
-                <li>
-                    <img src="/assets/images/blog-profile1.png" alt="Image">
-                    <h3>Medison Decros</h3>
-                    <span>On September 18,2020 at 4.30 pm</span>
+                <li v-for="comment in blogDetails.comments" :key="comment.id">
+                    <img :src="comment.image" alt="Image">
+                    <h3>{{comment.username}}</h3>
+                    <span>{{comment.publish_date}}</span>
                     <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. cu sociis natoque penatibus et magnis dis parturient montes, nascetur ridicule
-                    us mus. Donec quam felis, ultricies ne, pellentesque.
+                    {{comment.content}}
                     </p>
                     <a href="#"> Reply</a>
-                </li>
-                <li>
-                    <img src="/assets/images/blog-profile2.png" alt="Image">
-                    <h3>Jekson Albin</h3>
-                    <span>On September 18,2020 at 4.30 pm</span>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. cu sociis natoque penatibus et magnis dis parturient montes, nascetur ridicule
-                    us mus. Donec quam felis, ultricies ne, pellentesque.
-                    </p>
-                    <a href="#"> Reply</a>
-                </li>
-                <li>
-                    <img src="/assets/images/blog-profile3.png" alt="Image">
-                    <h3>Bentham Debid</h3>
-                    <span>On September 18,2020 at 4.30 pm</span>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    Aenean massa. cu sociis natoque penatibus et magnis dis parturient montes, nascetur ridicule
-                    us mus. Donec quam felis, ultricies ne, pellentesque.
-                    </p>
-                    <a href="#">Reply</a>
                 </li>
             </ul>
         </div>
@@ -190,7 +167,8 @@
 
 <script>
 export default {
-    name: 'AppBlogBody'
+    name: 'AppBlogBody',
+    props: ["blogDetails"]
 }
 </script>
 
