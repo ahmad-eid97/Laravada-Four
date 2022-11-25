@@ -3,23 +3,23 @@
         <div class="blog-article-img">
             <img :src="blogDetails.image" alt="Images">
             <div class="blog-article-tag">
-                <h3>04</h3>
-                <span>Nov</span>
+                <h3>{{ $date(new Date(blogDetails.publish_date), 'dd') }}</h3>
+                <span>{{ $date(new Date(blogDetails.publish_date), 'MMM') }}</span>
             </div>
         </div>
         <div class="blog-article-title">
             <ul>
                 <li>
                     <font-awesome-icon icon="fa-solid fa-user" />
-                    By Admin
+                    By {{blogDetails.username}}
                 </li>
                 <li>
                     <font-awesome-icon icon="fa-solid fa-eye" />
-                    322 View
+                    {{blogDetails.views}} View
                 </li>
                 <li>
                     <font-awesome-icon icon="fa-solid fa-comments" />
-                    2 Comments
+                    {{blogDetails.comments.length}} Comments
                 </li>
             </ul>
             <h2>10 Ways to Get Efficient Result and Benefits</h2>
@@ -68,9 +68,7 @@
                     <div class="blog-tag">
                         <ul>
                             <li><i class="bx bx-purchase-tag-alt"></i> Tags:</li>
-                            <li><a href="#">Android</a></li>
-                            <li><a href="#">Creative</a></li>
-                            <li><a href="#">App</a></li>
+                            <li v-for="tag in blogDetails.tags.slice(0,5)" :key="tag"><a href="#">{{tag}}</a></li>
                         </ul>
                     </div>
                 </div>

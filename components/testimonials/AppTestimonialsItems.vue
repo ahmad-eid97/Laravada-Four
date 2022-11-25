@@ -127,6 +127,7 @@ export default {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  max-height: 700px;
 }
 .clients-area .clients-slider-img .clients-slider-circle {
   position: absolute;
