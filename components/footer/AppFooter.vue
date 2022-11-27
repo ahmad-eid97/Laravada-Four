@@ -37,7 +37,7 @@
                     <font-awesome-icon icon="fa-solid fa-xmark" @click="side= !side"/>
                 </div>
                 <div class="widge">
-                    <h4>AVADA IT</h4>
+                    <h4>LARAVADA</h4>
                     <p>
                         Fusce ut ipsum tincidunt, porta nisl sollicitudin, vulputate nunc. Cras commodo leo ac nunc convallis ets efficitur.
                     </p>
@@ -75,11 +75,12 @@
                                     <font-awesome-icon icon="fa-solid fa-envelope" />
                                 </span>
                                 <div>
-                                    <p>info@railcoder.com</p>
+                                    <p>{{$store.state.websiteSettings.find(one => one.key === 'email').plain_value}}</p>
                                 </div>
                             </li>
                         </ul>
                     
+                        <!-- :href="`https://${$store.state.footerData.facebook}`" target="_blank" -->
                 </div>
 
             </div>

@@ -4,10 +4,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-play">
-                        <img src="/assets/images/about-img1.jpg" alt="About Images">
+                        <img :src="experienceSection.find(one => one.key === 'experience_image').value" alt="About Images">
                         <div class="about-play-content">
                             <span>Watch Our Intro Video</span>
-                            <h2>Perfect Solution for It Services!</h2>
+                            <h2>{{experienceSection.find(one => one.key === 'experience_title_video').value}}</h2>
                             <div class="play-on-area">
                                 <CoolLightBox
                                 :items="media"
@@ -25,26 +25,26 @@
                 <div class="col-lg-6">
                     <div class="about-content ml-25">
                         <div class="section-title">
-                            <span class="sp-color2">15 Years of Experience</span>
-                            <h2>Right Partner for Software Innovation</h2>
+                            <span class="sp-color2">{{experienceSection.find(one => one.key === 'experience_title').value}}</span>
+                            <h2>{{experienceSection.find(one => one.key === 'experience_sub_title').value}}</h2>
                             
                             <p>
-                            Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet.
+                                {{experienceSection.find(one => one.key === 'experience_description').value}}
                             </p>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <ul class="about-list text-start">
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Cost of Supplies and Equipment</li>
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Bribed Autor Nisi Elit Volume</li>
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Cost of Supplies and Equipment</li>
+                                    <li v-for="item in experienceSection.find(one => one.key === 'experience_title_list').value.split(',').slice(0, Math.ceil(experienceSection.find(one => one.key === 'experience_title_list').value.split(',').length / 2))" :key="item">
+                                        <font-awesome-icon icon="fa-solid fa-circle-check" /> {{item}}
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <ul class="about-list about-list-2 text-start">
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Change the Volume of Expected</li>
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Easy to Customer Services</li>
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Good Quality Products Services</li>
+                                    <li v-for="item in experienceSection.find(one => one.key === 'experience_title_list').value.split(',').slice(Math.ceil(experienceSection.find(one => one.key === 'experience_title_list').value.split(',').length / 2), Math.ceil(experienceSection.find(one => one.key === 'experience_title_list').value.split(',').length))" :key="item">
+                                        <font-awesome-icon icon="fa-solid fa-circle-check" /> {{item}}
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
         </div>
         <ModalVideo
         channel="youtube"
-        videoId="tUP5S4YdEJo"
+        :videoId="experienceSection.find(one => one.key === 'experience_url_video').value.split('=')[1]"
         :isOpen.sync="videoIsOpen"
         />
     </div>
@@ -69,11 +69,12 @@ export default {
     components: {
         ModalVideo
     },
+    props: ["experienceSection"],
     data () {
         return {
             media: [{ 
                 type: 'youtube',
-                thumb: 'https://img.youtube.com/vi/WsptdUFthWI/hqdefault.jpg',
+                thumb: this.experienceSection.find(one => one.key === 'experience_url_video').value,
                 id: 'tUP5S4YdEJo'
             }],
             videoIsOpen: false,
@@ -84,7 +85,7 @@ export default {
         openGallery() {
             this.videoIsOpen = !this.videoIsOpen;
         }
-    }
+    },
 }
 </script>
 

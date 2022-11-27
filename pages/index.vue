@@ -30,6 +30,9 @@ export default {
     AppHomeSections,
     AppHomeBottomBanner
   },
+  mounted() {
+    console.log('==================>', this.$store.state.websiteSettings)
+  }
 }
 </script>
 <style>

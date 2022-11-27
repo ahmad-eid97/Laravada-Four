@@ -36,6 +36,7 @@
 </template>
 <script>
 export default {
+  // props: ["videoId"],
   props: {
     videoId: String,
     channel: String,
