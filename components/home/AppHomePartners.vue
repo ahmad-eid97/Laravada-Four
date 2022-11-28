@@ -6,39 +6,9 @@
             class="owl-carousel"
         >
 
-            <swiper-slide>
+            <swiper-slide v-for="partner in partners" :key="partner">
                 <div class="item">
-                <img class="imgo" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/Vector-Smart-Object-2-1-320x202.jpg" width="150" height="150">
-                </div>
-            </swiper-slide>
-
-            <swiper-slide>
-                <div class="item">
-                <img class="imgo" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/Vector-Smart-Object-320x202.png" width="150" height="150">
-                </div>
-            </swiper-slide>
-
-            <swiper-slide>
-                <div class="item">
-                <img class="imgo" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/Vector-Smart-Object-3-1-320x202.jpg" width="150" height="150">
-                </div>
-            </swiper-slide>
-
-            <swiper-slide>
-                <div class="item">
-                <img class="imgo" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/Vector-Smart-Object-2-1-320x202.jpg" width="150" height="150">
-                </div>
-            </swiper-slide>
-
-            <swiper-slide>
-                <div class="item">
-                <img class="imgo" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/cloud-logo-320x202.png" width="150" height="150">
-                </div>
-            </swiper-slide>
-
-            <swiper-slide>
-                <div class="item">
-                    <img class="imgo" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/Vector-Smart-Object-1-1-320x202.jpg" width="150" height="150">
+                <img class="imgo" :src="partner.image">
                 </div>
             </swiper-slide>
 
@@ -50,6 +20,7 @@
 
 export default {
     name: 'AppHomePartners',
+    props: ["partners"],
     data() {
         return {
             swiperOption: {
@@ -97,11 +68,11 @@ export default {
         text-align: center;
     }
     .partners .owl-carousel .item img {
-        max-height: 115px;
+        height: 80px !important;
         width: auto;
         display: inline;
         max-width: 100%;
-        height: auto;
+        /* height: auto; */
     }
 
 

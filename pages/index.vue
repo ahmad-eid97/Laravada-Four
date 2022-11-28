@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <app-home-intro></app-home-intro>
-    <app-home-partners></app-home-partners>
+    <app-home-partners :partners="partners"></app-home-partners>
     <app-home-features></app-home-features>
     <app-home-solutions></app-home-solutions>
-    <app-home-banner></app-home-banner>
+    <app-home-banner :latestBlog="latestBlog"></app-home-banner>
     <app-home-sections></app-home-sections>
     <app-home-bottom-banner></app-home-bottom-banner>
   </div>
@@ -21,6 +21,16 @@ import AppHomeBottomBanner from '../components/home/AppHomeBottomBanner.vue'
 
 export default {
   name: 'Home',
+  async asyncData({ $axios }) {
+    const partners = await $axios.get('/partners');
+
+    const latestBlog = await $axios.get('/blogs?latest=1');
+
+    return {
+      partners: partners.data.data.partners,
+      latestBlog: latestBlog.data.data.blogs.slice(0, 1)
+    }
+  },
   components: {
     AppHomeIntro,
     AppHomePartners,
@@ -30,9 +40,6 @@ export default {
     AppHomeSections,
     AppHomeBottomBanner
   },
-  mounted() {
-    console.log('==================>', this.$store.state.websiteSettings)
-  }
 }
 </script>
 <style>

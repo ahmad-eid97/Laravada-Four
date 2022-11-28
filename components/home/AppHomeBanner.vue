@@ -10,12 +10,12 @@
            </div>
            <div class="col-lg-8">
                <div class="content">
-                   <h2>What is a content delivery network?</h2>
+                   <h2>{{latestBlog[0].title}}</h2>
                    <p>
-                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fringilla ante eget tellus aliquam molestie. Aenean quis purus non arcu mattis euismod. Donec ne maximus eros. Sed quis tellus efficiti ornare turpis lacinia ritrim ligula. 
+                       {{latestBlog.short_description}}
                    </p>
                    <div class="btn-container d-flex justify-content-end">
-                       <a href="#">Read More <font-awesome-icon icon="fa-solid fa-angle-right" /></a>
+                       <nuxt-link :to="`/blog/${latestBlog[0].id}`">Read More <font-awesome-icon icon="fa-solid fa-angle-right" /></nuxt-link>
                    </div>
                </div>
            </div>
@@ -26,6 +26,7 @@
 <script>
 export default {
     name: 'AppHomeBanner',
+    props: ["latestBlog"],
     data() {
         return {
 
