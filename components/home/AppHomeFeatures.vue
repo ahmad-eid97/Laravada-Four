@@ -3,55 +3,35 @@
         <div class="row align-items-center">
             <div class="col-lg-6 p-0">
                     <div class="feature-inner">
-                        <h2>What we do <span>.</span></h2>
+                        <h2>{{features.find(one => one.key === 'features_title').value}} <span>.</span></h2>
                         <div class="seprator">
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                            {{features.find(one => one.key === 'features_description').value}}
                         </p>
                         <ul>
-                            <li>
-                                <font-awesome-icon icon="fa-brands fa-mixcloud" />
-                                <strong>Entirely cloud based</strong> – sit amet consectetur lorem ipsum
-                            </li>
-                            <li>
-                                <font-awesome-icon icon="fa-solid fa-laptop" />
-                                <strong>Any number of devices</strong> – tempor incididunt ut adipisicing elit
-                            </li>
-                            <li>
-                                <font-awesome-icon icon="fa-regular fa-user" />
-                                <strong>Single sign-in</strong> – magna aliqua labore et dolore
-                            </li>
-                            <li>
-                                <font-awesome-icon icon="fa-regular fa-hard-drive" />
-                                <strong>Disaster recovery</strong> – veniam quis nostrud ut enim ad minim
-                            </li>
-                            <li>
-                                <font-awesome-icon icon="fa-solid fa-globe" />
-                                <strong>Access from anywhere</strong> – labore et dolore magna aliqua
-                            </li>
-                            <li>
-                                <font-awesome-icon icon="fa-solid fa-download" />
-                                <strong>Real-time backups</strong> – ut enim ad minim veniam quis nostrud
+                            <li v-for="feature in features.find(one => one.key === 'features_text_list').value" :key="feature">
+                                <font-awesome-icon :icon="feature.icon" />
+                                <strong>{{feature.title}}</strong> – {{feature.description}}
                             </li>
                         </ul>
                     </div>
             </div>
             <div class="col-lg-6 p-0">
                 <div class="boxes">
-                    <div class="box">
+                    <div v-for="feature in features.find(one => one.key === 'features_image_list').value.slice(0, 3)" :key="feature" class="box">
                         <div class="heading">
                             <a href="#" class="d-flex align-items-center">
-                                <span class="icon"><font-awesome-icon icon="fa-solid fa-cloud-arrow-up" /></span>
-                                <h2>CLOUD COMPUTING</h2>
+                                <span class="icon"><font-awesome-icon :icon="feature.icon" /></span>
+                                <h2>{{feature.title}}</h2>
                             </a>
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore etre.
+                            {{feature.description}}
                         </p>
                         <div class="line"></div>
                     </div>
-                    <div class="box">
+                    <!-- <div class="box">
                         <div class="heading">
                             <a href="#" class="d-flex align-items-center">
                                 <span class="icon"><font-awesome-icon icon="fa-solid fa-lock" /></span>
@@ -73,7 +53,7 @@
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore etre.
                         </p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -83,6 +63,7 @@
 <script>
 export default {
     name: 'AppHomeFeatures',
+    props: ["features"],
     data() {
         return {
 
@@ -90,7 +71,7 @@ export default {
     }
 }
 </script>
-<style>
+<style lang="scss">
     .features {
         padding-top: 160px;
         margin-top: 0px;
@@ -241,6 +222,11 @@ export default {
         border-left: 1px solid rgb(116, 197, 218);
         z-index: -1;
         animation: fusionExpandHeight 1s 1 cubic-bezier(.17,.67,.83,.67);
+    }
+    .features .box:last-of-type {
+        .line {
+            display: none;
+        }
     }
     @keyframes fusionSonarEffect {
         0% {

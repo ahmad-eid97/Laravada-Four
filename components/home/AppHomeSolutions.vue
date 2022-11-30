@@ -2,35 +2,26 @@
     <section class="solutions">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5">
-                <h2 class="heading">SCALABLE TECHNOLOGY<span>.</span></h2>
+                <h2 class="heading">{{solutions.find(one => one.key === 'solutions_title').value}}<span>.</span></h2>
                 <div class="seprator"></div>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Nullam nisl urna, molestie placerat egestas eu, iaculis vitae velit cras congue neque mauris.
+                    {{solutions.find(one => one.key === 'solutions_description').value}}
                 </p>
                 <div class="row m-0">
-                    <div class="col-sm-6 solution">
+                    <div v-for="item in solutions.find(one => one.key === 'solutions_list').value" :key="item" class="col-sm-6 solution">
                         <h2>
-                            <span class="icon"><font-awesome-icon icon="fa-solid fa-shield-halved" /></span>
-                            <span>SECURITY</span>
+                            <span class="icon"><font-awesome-icon :icon="item.icon" /></span>
+                            <span>{{item.title}}</span>
                         </h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempor incididunt ut labore et dolore magna.
-                        </p>
-                    </div>
-                    <div class="col-sm-6 solution">
-                        <h2>
-                            <span class="icon"><font-awesome-icon icon="fa-solid fa-rocket" /></span>
-                            <span>SECURITY</span>
-                        </h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempor incididunt ut labore et dolore magna.
+                            {{item.description}}
                         </p>
                     </div>
                 </div>
-                <a href="#" class="btn">Our solutions</a>
+                <a :href="solutions.find(one => one.key === 'solutions_link').value" class="btn">Our solutions</a>
             </div>
             <div class="col image text-center">
-                <img class="img-fluid" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/iPad-Pro-Space-Silver.png" alt="">
+                <img class="img-fluid" :src="solutions.find(one => one.key === 'solutions_image').value" alt="solutions image">
             </div>
         </div>
     </section>
@@ -39,6 +30,7 @@
 <script>
 export default {
     name: 'AppHomeSolutions',
+    props: ["solutions"],
     data() {
         return {
 

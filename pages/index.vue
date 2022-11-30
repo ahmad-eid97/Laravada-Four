@@ -2,10 +2,10 @@
   <div class="home">
     <app-home-intro></app-home-intro>
     <app-home-partners :partners="partners"></app-home-partners>
-    <app-home-features></app-home-features>
-    <app-home-solutions></app-home-solutions>
+    <app-home-features :features="features"></app-home-features>
+    <app-home-solutions :solutions="solutions"></app-home-solutions>
     <app-home-banner :latestBlog="latestBlog"></app-home-banner>
-    <app-home-sections></app-home-sections>
+    <app-home-sections :services="services"></app-home-sections>
     <app-home-bottom-banner></app-home-bottom-banner>
   </div>
 </template>
@@ -24,11 +24,20 @@ export default {
   async asyncData({ $axios }) {
     const partners = await $axios.get('/partners');
 
+    const features = await $axios.get('/sections/features');
+
+    const solutions = await $axios.get('/sections/solutions');
+
     const latestBlog = await $axios.get('/blogs?latest=1');
+
+    const services = await $axios.get('/services');
 
     return {
       partners: partners.data.data.partners,
-      latestBlog: latestBlog.data.data.blogs.slice(0, 1)
+      features: features.data.data,
+      solutions: solutions.data.data,
+      latestBlog: latestBlog.data.data.blogs.slice(0, 1),
+      services: services.data.data.services,
     }
   },
   components: {

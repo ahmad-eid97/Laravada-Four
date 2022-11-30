@@ -1,37 +1,23 @@
 <template>
     <div class="sections">
+
+        <h1>Services We Provide</h1>
+
        <div class="row m-0">
-            <div class="col-lg section">
+            <div v-for="service in services.slice(0, 3)" :key="service.id" class="col-lg section">
                 <div class="heading text-center">
                     <a href="#">
-                        <img class="img-fluid" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/Vector-Smart-Object-3-1.jpg" alt="">
+                        <img class="img-fluid" :src="service.image" :alt="service.title">
                     </a>
                 </div>
                 <p>
-                    “Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris consequat, mauris sed tincidunt maximus, quam felis vulputate augue, et finibus lorem est vel odios.”
+                    {{service.short_description.substring(0, 200) + '...'}}
                 </p>
             </div>
-            <div class="col-lg section bordered">
-                <div class="heading text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/Vector-Smart-Object-2-1.jpg" alt="">
-                    </a>
-                </div>
-                <p>
-                    “Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris consequat, mauris sed tincidunt maximus, quam felis vulputate augue, et finibus lorem est vel odios.”
-                </p>
-            </div>
-            <div class="col-lg section">
-                <div class="heading text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/10/Vector-Smart-Object.png" alt="">
-                    </a>
-                </div>
-                <p>
-                    “Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris consequat, mauris sed tincidunt maximus, quam felis vulputate augue, et finibus lorem est vel odios.”
-                </p>
-            </div>
-           
+       </div>
+
+       <div class="bottomButton" @click="$router.push('/services')">
+            <button>See More</button>
        </div>
     </div>
 </template>
@@ -39,6 +25,7 @@
 <script>
 export default {
     name: 'AppHomeSections',
+    props: ["services"],
     data() {
         return {
 
@@ -47,14 +34,19 @@ export default {
 }
 </script>
 <style lang="scss">
-    .section {
+    .sections {
         padding-bottom: 45px;
         padding-left: 30px;
         padding-right: 30px;
         padding-top: 45px
     }
 
-    .section p {
+    .sections h1 {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .sections p {
         color: rgb(118, 136, 148);
         font-family: Roboto;
         font-size: 22px;
@@ -69,12 +61,42 @@ export default {
         border-right: 1px solid #ebebeb;
         border-left: 1px solid #ebebeb;
     }
+    .heading img {
+        width: 100%;
+        height: 250px;
+        margin-bottom: 30px;
+    }
+    .bottomButton {
+        display: flex;
+        justify-content: center;
+        button {
+            border-radius: 25px 25px 25px 25px;
+            padding-bottom: 17px;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 17px;
+            font-weight: 500;
+            justify-content: center;
+            letter-spacing: 2px;
+            font-size: 18px;
+            color: rgb(255, 255, 255);
+            background-color: #74c5da;
+            line-height: 17px;
+            min-width: 200px;
+            text-transform: uppercase;
+            font-family: "Roboto";
+            border: none;
+            &:hover {
+                background-color: var(--main-color);
+            }
+        }
+    }
     @include xs {
         .heading img {
             width: 220px;
         }
 
-        .section p {
+        .sections p {
             font-size: 18px;
             line-height: 28px;
         }
