@@ -18,7 +18,7 @@
                                     </div>
                                     <i class="bx bx-phone-call"></i>
                                     <h3>Phone Number</h3>
-                                    <a href="tel:+1(212)-255-5511">+1 (212) 255-5511</a>
+                                    <a href="tel:+1(212)-255-5511">{{$store.state.websiteSettings.find(one => one.key === 'contact_phone').plain_value}}</a>
                                 </div>
                             </li>
                             <li>
@@ -27,7 +27,7 @@
                                         <font-awesome-icon icon="fa-solid fa-location-dot" />
                                     </div>
                                     <h3>Address</h3>
-                                    <a href="#">124 Virgil A Virginia, USA</a>
+                                    <a href="#">{{$store.state.websiteSettings.find(one => one.key === 'contact_address').plain_value}}</a>
                                 </div>
                             </li>
                             <li>
@@ -36,7 +36,7 @@
                                         <font-awesome-icon icon="fa-regular fa-message" />
                                     </div>
                                     <h3>Contact Info</h3>
-                                    <a href="mailto:hello@techex.com">hello@techex.com</a>
+                                    <a href="mailto:hello@techex.com">{{$store.state.websiteSettings.find(one => one.key === 'contact_email').plain_value}}</a>
                                 </div>
                             </li>
                         </ul>
@@ -49,35 +49,46 @@
                                 <div class="col-lg-6">
                                     <div class="form-group has-error">
                                         <label>Your Name <span>*</span></label>
-                                        <input type="text" name="name" id="name" class="form-control" required="" data-error="Please Enter Your Name" placeholder="Name">
+                                        <input type="text" name="name" id="name" class="form-control" :class="!name && emptyFields ? 'error' : ''" required="" data-error="Please Enter Your Name" placeholder="Name" v-model="name">
+                                        
+                                        <span v-if="!name && emptyFields" class="error">This field can't be empty</span>
                                         
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Your Email <span>*</span></label>
-                                        <input type="email" name="email" id="email" class="form-control" required="" data-error="Please Enter Your Email" placeholder="Email">
+                                        <input type="email" name="email" id="email" class="form-control" :class="!email && emptyFields ? 'error' : ''" required="" data-error="Please Enter Your Email" placeholder="Email" v-model="email">
+                                        
+                                        <span v-if="!email && emptyFields" class="error">This field can't be empty</span>
                                         
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Phone Number <span>*</span></label>
-                                        <input type="text" name="phone_number" id="phone_number" required="" data-error="Please Enter Your number" class="form-control" placeholder="Phone Number">
+                                        <input type="text" name="phone_number" id="phone_number" required="" data-error="Please Enter Your number" class="form-control" :class="!phone_number && emptyFields ? 'error' : ''" placeholder="Phone Number" v-model="phone_number">
+                                        
+                                        <span v-if="!phone_number && emptyFields" class="error">This field can't be empty</span>
                                         
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Your Subject <span>*</span></label>
-                                        <input type="text" name="msg_subject" id="msg_subject" class="form-control" required="" data-error="Please Enter Your Subject" placeholder="Your Subject">
+                                        <input type="text" name="msg_subject" id="msg_subject" class="form-control" required="" data-error="Please Enter Your Subject" :class="!form_title && emptyFields ? 'error' : ''" placeholder="Your Subject" v-model="form_title">
+                                        
+                                        <span v-if="!form_title && emptyFields" class="error">This field can't be empty</span>
                                         
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
                                         <label>Your Message <span>*</span></label>
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="8" required="" data-error="Write your message" placeholder="Your Message"></textarea>
+                                        <textarea name="message" class="form-control" id="message" cols="30" rows="8" required="" data-error="Write your message" placeholder="Your Message" v-model="form_subtitle" :class="!form_subtitle && emptyFields ? 'error' : ''"></textarea>
+                                        
+                                        <span v-if="!form_subtitle && emptyFields" class="error">This field can't be empty</span>
+
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -90,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 text-center">
-                                    <button type="submit" class="default-btn btn-bg-two border-radius-50 disabled" style="pointer-events: all; cursor: pointer;">
+                                    <button type="button" class="default-btn btn-bg-two border-radius-50 disabled" style="pointer-events: all; cursor: pointer;" @click="sendMessage">
                                         Send Message <i class="bx bx-chevron-right"></i>
                                     </button>
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>
@@ -107,7 +118,38 @@
 
 <script>
 export default {
+    data() {
+        return {
+            emptyFields: false,
+            name: '',
+            email: '',
+            phone_number: '',
+            form_title: '',
+            form_subtitle: '',
+        }
+    },
+    methods: {
+        async sendMessage () {
+            if (this.name && this.email && this.phone_number && this.form_title && this.form_subtitle ) {
+                const dataToSend = {
+                    name: this.name,
+                    email: this.email,
+                    phone_number: this.phone_number,
+                    form_title: this.form_title,
+                    form_subtitle: this.form_subtitle
+                }
+                const response = await this.$axios.$post('/contacts', dataToSend);
 
+                console.log(response)
+
+                this.$toast.success('Message sent successfully')
+
+            } else {
+                this.emptyFields = true
+                this.$toast.error('Please fill all fields!')
+            }
+        }
+    }
 }
 </script>
 
@@ -262,5 +304,9 @@ height: auto;
   padding: 10px 16px;
   font-weight: bold;
   border: none;
+}
+
+span.error {
+    color: rgb(255, 101, 101);
 }
 </style>
