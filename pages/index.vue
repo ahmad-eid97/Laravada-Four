@@ -23,20 +23,36 @@ import AppHomeBottomBanner from "../components/home/AppHomeBottomBanner.vue";
 
 export default {
   name: "Home",
-  async asyncData({ $axios }) {
-    const bannerHead = await $axios.get("/sections/banner");
+  async asyncData({ $axios, app }) {
+    const bannerHead = await $axios.get("/sections/banner", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
     const partners = await $axios.get("/partners");
 
-    const features = await $axios.get("/sections/features");
+    const features = await $axios.get("/sections/features", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
-    const solutions = await $axios.get("/sections/solutions");
+    const solutions = await $axios.get("/sections/solutions", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
     const latestBlog = await $axios.get("/blogs?latest=1");
 
     const services = await $axios.get("/services");
 
-    const bottomBanner = await $axios.get("/sections/banner-bottom");
+    const bottomBanner = await $axios.get("/sections/banner-bottom", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
     return {
       bannerHead: bannerHead.data.data,
