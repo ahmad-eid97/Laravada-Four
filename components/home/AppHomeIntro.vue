@@ -10,8 +10,7 @@
           <a
             :href="bannerHead.find((one) => one.key === 'banner_link').value"
             class="btn"
-            ><font-awesome-icon icon="fa-brands fa-mixcloud" class="mx-2" />
-            Explore solutions</a
+            ><i class="fa-brands fa-mixcloud mx-2"></i> Explore solutions</a
           >
         </div>
         <div class="col-md-6">
