@@ -1,7 +1,7 @@
 <template>
   <div class="side-bar-widget">
     <h3 class="title">Gallery</h3>
-    <ul class="blog-gallery">
+    <ul class="blog-gallery" v-if="blogDetails.gallery.length >= 1">
       <li
         v-for="(image, index) in blogDetails.gallery"
         :key="index"

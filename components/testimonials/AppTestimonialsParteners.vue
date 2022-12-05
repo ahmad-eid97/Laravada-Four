@@ -1,14 +1,13 @@
 <template>
   <section class="about-partners">
-    <swiper :options="swiperOption" class="owl-carousel">
+    <swiper
+      :options="swiperOption"
+      class="owl-carousel"
+      v-if="partners.partners.length >= 1"
+    >
       <swiper-slide v-for="partner in partners.partners" :key="partner.id">
         <div class="item">
-          <img
-            class="imgo"
-            :src="partner.image"
-            width="150"
-            height="150"
-          />
+          <img class="imgo" :src="partner.image" width="150" height="150" />
         </div>
       </swiper-slide>
     </swiper>
@@ -52,7 +51,7 @@ export default {
       },
     };
   },
-  props: ["partners"]
+  props: ["partners"],
 };
 </script>
 <style>

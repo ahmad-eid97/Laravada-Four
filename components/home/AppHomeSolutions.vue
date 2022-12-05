@@ -12,7 +12,10 @@
             solutions.find((one) => one.key === "solutions_description").value
           }}
         </p>
-        <div class="row m-0">
+        <div
+          class="row m-0"
+          v-if="solutions.find((one) => one.key === 'solutions_list').value"
+        >
           <div
             v-for="item in solutions.find((one) => one.key === 'solutions_list')
               .value"

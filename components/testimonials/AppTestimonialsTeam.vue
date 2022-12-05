@@ -5,7 +5,7 @@
         <span class="sp-color2">Our Team</span>
         <h2>Our Team Members</h2>
       </div>
-      <div class="row pt-45">
+      <div class="row pt-45" v-if="team.teams.length >= 1">
         <div
           v-for="member in team.teams"
           :key="member.id"

@@ -27,7 +27,12 @@
         </div>
       </div>
       <div class="col-lg-6 p-0">
-        <div class="boxes">
+        <div
+          class="boxes"
+          v-if="
+            features.find((one) => one.key === 'features_image_list').value >= 1
+          "
+        >
           <div
             v-for="feature in features
               .find((one) => one.key === 'features_image_list')
@@ -81,6 +86,9 @@ export default {
   props: ["features"],
   data() {
     return {};
+  },
+  mounted() {
+    console.log(this.features);
   },
 };
 </script>
