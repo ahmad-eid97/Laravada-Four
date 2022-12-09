@@ -69,6 +69,7 @@ export default {
 .projects-col {
   text-align: center;
   margin-bottom: 40px;
+  height: 100%;
 }
 .projects-col .card {
   text-align: center;
@@ -143,5 +144,8 @@ export default {
 .projects-col:hover .rollover {
   opacity: 1;
   transform: translateX(0);
+}
+.card {
+  height: 100%;
 }
 </style>

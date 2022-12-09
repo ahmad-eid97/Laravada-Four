@@ -172,7 +172,7 @@ header {
 }
 .active .nav-link,
 .nav-link:hover {
-  color: rgb(98, 57, 189);
+  /* color: rgb(98, 57, 189); */
 }
 
 .navbar-toggler,
@@ -335,6 +335,11 @@ nav .btn:hover {
 .nav-link.active {
   color: rgb(98, 57, 189) !important;
 }
+
+.nav-item:hover a.active {
+  color: #fff !important;
+}
+
 @media screen and (max-width: 991px) {
   .navbar-collapse.show {
     position: absolute;

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="">
     <app-about-heading></app-about-heading>
 
     <app-about-intro :aboutSection="aboutSection"></app-about-intro>
