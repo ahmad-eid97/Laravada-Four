@@ -1,7 +1,7 @@
 <template>
   <header>
     <b-navbar toggleable="lg">
-      <b-navbar-brand href="/">
+      <b-navbar-brand :href="localePath('/')">
         <img src="assets/images/logo.png" alt="logoImage" />
       </b-navbar-brand>
 
