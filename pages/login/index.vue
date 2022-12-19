@@ -1,47 +1,48 @@
 <template>
-    <div class="home">
-        <app-login-heading></app-login-heading>
-        <app-login-form></app-login-form>
-    </div>
+  <div class="home">
+    <app-login-heading></app-login-heading>
+    <app-login-form></app-login-form>
+  </div>
 </template>
 
 <script>
-import AppLoginForm from '../../components/login/AppLoginForm.vue'
-import AppLoginHeading from '../../components/login/AppLoginHeading.vue'
+import AppLoginForm from "../../components/login/AppLoginForm.vue";
+import AppLoginHeading from "../../components/login/AppLoginHeading.vue";
 export default {
+  middleware: ["guest"],
   components: { AppLoginHeading, AppLoginForm },
-    name: 'Login'
-}
+  name: "Login",
+};
 </script>
 
 <style>
 .contact-form-area .section-title h2 {
-    max-width: 600px;
-    color: #212529;
-    font-size: 35px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 42px;
-    text-align: left;
-    margin-top: 10px;
-    margin-right: auto;
-    margin-bottom: 15px;
-    margin-left: auto;
-    text-align: center;
+  max-width: 600px;
+  color: #212529;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 42px;
+  text-align: left;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-left: auto;
+  text-align: center;
 }
 
 .contact-form-area h2 {
-    font-size: 35px;
-    font-weight: 600;
-    margin-top: 0;
-    line-height: 1.2;
-    color:#212529;
-    margin-bottom: 0;
+  font-size: 35px;
+  font-weight: 600;
+  margin-top: 0;
+  line-height: 1.2;
+  color: #212529;
+  margin-bottom: 0;
 }
 .contact-info::before {
-  content: '';
+  content: "";
   position: absolute;
-  opacity: .1;
+  opacity: 0.1;
   z-index: -1;
   top: 0;
   left: 0;
@@ -54,17 +55,17 @@ export default {
   background-repeat: no-repeat;
 }
 .contact-form-area .contact-info {
-    margin-bottom: 30px;
-    background-color:var(--main-color);
-    padding: 52px 35px 22px;
-    border-radius: 12px;
-    position: relative;
-    z-index: 1;
+  margin-bottom: 30px;
+  background-color: var(--main-color);
+  padding: 52px 35px 22px;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
 }
 .contact-form-area .contact-info span {
-    color: #fff;
-    display: block;
-    margin-bottom: 5px;
+  color: #fff;
+  display: block;
+  margin-bottom: 5px;
 }
 .contact-form-area .contact-info h2 {
   color: #fff;
@@ -92,7 +93,7 @@ export default {
   line-height: 45px;
   background-color: #fff;
   font-size: 20px;
-  color:var(--main-color);
+  color: var(--main-color);
   border-radius: 50px;
   border: 1px solid #fff;
   margin-bottom: 10px;
@@ -146,7 +147,7 @@ export default {
   top: 5px;
   left: 0;
   width: auto;
-height: auto;
+  height: auto;
 }
 .contact-form .agree-label label {
   font-weight: 500;
@@ -154,11 +155,12 @@ height: auto;
   margin-left: 25px;
 }
 .contact-form .agree-label label a,
-.contact-form  a {
+.contact-form a {
   color: var(--main-color);
 }
 
-.contact-form .default-btn, .contact-form .default-btn:hover {
+.contact-form .default-btn,
+.contact-form .default-btn:hover {
   background-color: var(--main-color);
   border-radius: 25px;
   color: #fff;

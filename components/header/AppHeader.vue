@@ -40,6 +40,9 @@
           <b-nav-item active-class="active" :to="localePath('/blogs')"
             >News</b-nav-item
           >
+          <b-nav-item active-class="active" :to="localePath('/careers')"
+            >Career</b-nav-item
+          >
           <b-nav-item class="m-0">
             <a href="#" class="btn">Get started</a>
           </b-nav-item>
@@ -57,7 +60,7 @@
           <i class="fa-solid fa-xmark" @click="side = !side"></i>
         </div>
         <div class="widge">
-          <h4>AVADA IT</h4>
+          <h4>LARAVADA</h4>
           <p>
             Fusce ut ipsum tincidunt, porta nisl sollicitudin, vulputate nunc.
             Cras commodo leo ac nunc convallis ets efficitur.
