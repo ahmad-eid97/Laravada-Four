@@ -110,7 +110,9 @@ export default {
         margin: 0;
       }
       img {
-        width: 100px;
+        width: 150px;
+        height: 100px;
+        object-fit: contain;
       }
     }
     .btns {

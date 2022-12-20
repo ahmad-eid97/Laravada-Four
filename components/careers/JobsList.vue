@@ -9,18 +9,26 @@
         :key="job"
         class="col-md-6 col-lg-4 col-xl-3 mb-4"
       >
-        <div class="job" @click="$router.push(localePath(`/career/${job.id}`))">
+        <div class="job">
           <span
             v-if="job.category"
             class="category"
             :style="{ backgroundColor: random_rgba() }"
             >{{ job.category.name }}</span
           >
-          <img v-if="job.photo" :src="job.photo" alt="jobImage" />
-          <h3>{{ job.title }}</h3>
+          <img
+            v-if="job.photo"
+            :src="job.photo"
+            alt="jobImage"
+            @click="$router.push(localePath(`/career/${job.id}`))"
+          />
+          <h3 @click="$router.push(localePath(`/career/${job.id}`))">
+            {{ job.title.substring(0, 50) }}
+            {{ job.title.length > 50 ? "..." : "" }}
+          </h3>
           <div class="tags" v-if="job.skills">
             <span
-              v-for="skill in job.skills.split('\r\n').slice(0, 6)"
+              v-for="skill in job.skills.split('\r\n').slice(0, 3)"
               :key="skill"
               >{{ skill }}</span
             >
@@ -28,8 +36,18 @@
         </div>
       </div>
 
-      <div class="btn">
-        <button>Explore More Jobs</button>
+      <div class="col-lg-12 col-md-12 text-center">
+        <div class="pagination-area">
+          <a href="#" class="page-numbers">
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
+          <span class="page-numbers current" aria-current="page">1</span>
+          <a href="#" class="page-numbers">2</a>
+          <a href="#" class="page-numbers">3</a>
+          <a href="#" class="page-numbers">
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -78,7 +96,6 @@ export default {
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     position: relative;
     margin-bottom: 20px;
@@ -91,12 +108,15 @@ export default {
       border-radius: 5px;
     }
     img {
-      width: 100px;
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
       margin-bottom: 10px;
       cursor: pointer;
     }
     h3 {
       cursor: pointer;
+      text-align: center;
     }
     .tags {
       display: flex;

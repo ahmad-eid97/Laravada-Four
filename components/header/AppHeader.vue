@@ -43,6 +43,9 @@
           <b-nav-item active-class="active" :to="localePath('/careers')"
             >Career</b-nav-item
           >
+          <b-nav-item active-class="active" :to="localePath('/events')"
+            >Events</b-nav-item
+          >
           <b-nav-item class="m-0">
             <a href="#" class="btn">Get started</a>
           </b-nav-item>

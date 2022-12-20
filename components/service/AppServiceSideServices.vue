@@ -54,6 +54,6 @@ export default {
   width: 100%;
 }
 .side-bar-widget .side-bar-categories ul li a:hover {
-  color: #ffb536;
+  color: var(--main-color);
 }
 </style>

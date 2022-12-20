@@ -134,20 +134,24 @@ export default {
       const response = await this.$axios.post("/users/auth/register", data);
 
       if (!response.data.success) {
-        if (response.data.data.name) {
-          response.data.data.name.forEach((error) => {
-            return this.$toast.error(error);
-          });
-        }
-        if (response.data.data.email) {
-          response.data.data.email.forEach((error) => {
-            return this.$toast.error(error);
-          });
-        }
-        if (response.data.data.password) {
-          response.data.data.password.forEach((error) => {
-            return this.$toast.error(error);
-          });
+        if (response.data.data) {
+          if (response.data.data.name) {
+            response.data.data.name.forEach((error) => {
+              return this.$toast.error(error);
+            });
+          }
+          if (response.data.data.email) {
+            response.data.data.email.forEach((error) => {
+              return this.$toast.error(error);
+            });
+          }
+          if (response.data.data.password) {
+            response.data.data.password.forEach((error) => {
+              return this.$toast.error(error);
+            });
+          }
+        } else {
+          return this.$toast.error(response.data.message);
         }
         return;
       }

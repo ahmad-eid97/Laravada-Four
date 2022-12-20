@@ -8,18 +8,26 @@
         :key="job"
         class="col-md-6 col-lg-4 col-xl-3 mb-4"
       >
-        <div class="job" @click="$router.push(localePath(`/career/${job.id}`))">
+        <div class="job">
           <span
             v-if="job.category"
             class="category"
             :style="{ backgroundColor: random_rgba() }"
             >{{ job.category.name }}</span
           >
-          <img v-if="job.photo" :src="job.photo" alt="jobImage" />
-          <h3>{{ job.title }}</h3>
+          <img
+            v-if="job.photo"
+            :src="job.photo"
+            alt="jobImage"
+            @click="$router.push(localePath(`/career/${job.id}`))"
+          />
+          <h3 @click="$router.push(localePath(`/career/${job.id}`))">
+            {{ job.title.substring(0, 50) }}
+            {{ job.title.length > 50 ? "..." : "" }}
+          </h3>
           <div class="tags" v-if="job.skills">
             <span
-              v-for="skill in job.skills.split('\r\n').slice(0, 6)"
+              v-for="skill in job.skills.split('\r\n').slice(0, 3)"
               :key="skill"
               >{{ skill }}</span
             >
@@ -90,12 +98,15 @@ export default {
       border-radius: 5px;
     }
     img {
-      width: 100px;
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
       margin-bottom: 10px;
       cursor: pointer;
     }
     h3 {
       cursor: pointer;
+      text-align: center;
     }
     .tags {
       display: flex;
