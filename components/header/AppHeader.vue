@@ -54,7 +54,7 @@
             <i class="fa-solid fa-plus d-lg-block d-none"></i>
             <span class="d-lg-none d-block">Side Bar</span>
           </b-nav-item>
-          <div class="logout" @click="logout">
+          <div v-if="$store.state.user" class="logout" @click="logout">
             <i class="fa-regular fa-right-from-bracket"></i>
           </div>
         </b-navbar-nav>
@@ -140,7 +140,7 @@ export default {
       this.$store.commit("setUserData", null);
       this.$cookies.remove("cms-auth");
       this.$cookies.remove("cms-user");
-      window.location.href = "/login";
+      this.$router.push(this.localePath("/login"));
     },
     // handleScroll(){
     //     if(window.pageYOffset>200){
