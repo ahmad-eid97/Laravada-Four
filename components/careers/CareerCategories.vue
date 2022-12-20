@@ -7,7 +7,7 @@
       <div
         v-for="category in careerCategories"
         :key="category"
-        class="col-md-4 col-lg-3 col-xl-2"
+        class="col-md-4 col-lg-3 col-xl-2 mb-4"
       >
         <div class="category" :style="{ backgroundColor: random_rgba() }">
           <i :class="category.icon"></i>
@@ -84,6 +84,7 @@ export default {
     flex-direction: column;
     position: relative;
     margin-bottom: 20px;
+    height: 100%;
     i {
       width: 60px;
       height: 60px;
@@ -93,6 +94,9 @@ export default {
       place-content: center;
       font-size: 1.2rem;
       margin-bottom: 10px;
+    }
+    h5 {
+      text-align: center;
     }
   }
   .btn {

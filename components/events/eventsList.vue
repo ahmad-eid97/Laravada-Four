@@ -74,6 +74,8 @@ export default {
       height: 100%;
       display: grid;
       place-items: center;
+      background-repeat: no-repeat;
+      background-size: cover;
       @include xs {
         height: 200px;
       }

@@ -85,7 +85,6 @@ export default {
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     position: relative;
     margin-bottom: 20px;
@@ -107,6 +106,7 @@ export default {
     h3 {
       cursor: pointer;
       text-align: center;
+      margin: 10px 0 20px;
     }
     .tags {
       display: flex;

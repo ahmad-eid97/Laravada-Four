@@ -54,6 +54,9 @@
             <i class="fa-solid fa-plus d-lg-block d-none"></i>
             <span class="d-lg-none d-block">Side Bar</span>
           </b-nav-item>
+          <div class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -133,6 +136,12 @@ export default {
   },
   mounted() {},
   methods: {
+    logout() {
+      this.$store.commit("setUserData", null);
+      this.$cookies.remove("cms-auth");
+      this.$cookies.remove("cms-user");
+      window.location.href = "/login";
+    },
     // handleScroll(){
     //     if(window.pageYOffset>200){
     //         if(this.topOfPage) this.topOfPage = false
@@ -152,6 +161,17 @@ header {
   min-height: 60px;
   background-color: #fff;
   z-index: 9999;
+}
+.logout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 .navbar-brand {
   padding-top: 0px !important;

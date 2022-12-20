@@ -96,6 +96,7 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    gap: 20px;
     @include xs {
       flex-direction: column;
       .btns {
@@ -126,6 +127,7 @@ export default {
         border: 1px solid #ccc;
         background: transparent;
         border-radius: 5px;
+        min-width: 200px;
         &.apply {
           background: var(--main-color);
           color: #fff;
