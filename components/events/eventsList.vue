@@ -3,7 +3,7 @@
     <h5>Events</h5>
     <h1>Our Upcoming Events</h1>
     <div class="row">
-      <div class="col-lg-6" v-for="event in eventsList" :key="event">
+      <div class="col-lg-6 mb-4" v-for="event in eventsList" :key="event">
         <div class="event">
           <div class="buy" :style="{ backgroundImage: `url(${event.image})` }">
             <button>BUY TICKET</button>
@@ -58,10 +58,12 @@ export default {
   }
   .event {
     display: grid;
+    align-items: center;
     grid-template-columns: repeat(12, 1fr);
     gap: 10px;
     background: var(--main-color);
     margin-bottom: 20px;
+    height: 100%;
     .buy,
     .details {
       grid-column: span 6;
@@ -74,6 +76,7 @@ export default {
       height: 100%;
       display: grid;
       place-items: center;
+      background-position: 100%;
       background-repeat: no-repeat;
       background-size: cover;
       @include xs {
