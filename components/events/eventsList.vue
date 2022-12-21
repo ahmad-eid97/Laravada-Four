@@ -5,7 +5,8 @@
     <div class="row">
       <div class="col-lg-6 mb-4" v-for="event in eventsList" :key="event">
         <div class="event">
-          <div class="buy" :style="{ backgroundImage: `url(${event.image})` }">
+          <div class="buy">
+            <img :src="event.image" alt="eventImage" />
             <button>BUY TICKET</button>
           </div>
           <div class="details">
@@ -79,8 +80,19 @@ export default {
       background-position: 100%;
       background-repeat: no-repeat;
       background-size: cover;
+      position: relative;
       @include xs {
         height: 200px;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.5);
+        z-index: 1;
       }
       button {
         background: var(--main-color);
@@ -89,6 +101,8 @@ export default {
         padding: 10px 30px;
         color: #fff;
         font-size: 1.2rem;
+        position: relative;
+        z-index: 2;
         &:hover {
           background-color: transparent;
           border: 1px solid #ccc;
