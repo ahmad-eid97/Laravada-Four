@@ -2,7 +2,21 @@
   <div class="courseIntro">
     <div class="row align-items-center">
       <div class="col-lg-6">
-        <img :src="courseDetails.image" alt="courseImage" />
+        <div class="gallery">
+          <VueSlickCarousel
+            :slidesToShow="1"
+            :slidesToScroll="1"
+            :arrows="true"
+            :dots="false"
+            v-if="courseDetails.images"
+          >
+            <div v-for="image in courseDetails.images" :key="image">
+              <div class="item">
+                <img :src="image" alt="courseImage" />
+              </div>
+            </div>
+          </VueSlickCarousel>
+        </div>
       </div>
       <div class="col-lg-6">
         <div class="details">
@@ -11,17 +25,16 @@
               color="#f39c12"
               :inline="true"
               :no-border="true"
-              value="5"
+              :value="courseDetails.avg_reviews"
               readonly
             ></b-form-rating>
-            <span>( 1 Customer Reviews )</span>
+            <span>( {{ courseDetails.num_reviews }} Customer Reviews )</span>
           </div>
 
           <h1>{{ courseDetails.title }}</h1>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            vel metus malesuada ante imperdiet lobortis.
+            {{ courseDetails.summary }}
           </p>
 
           <div class="price">
@@ -37,8 +50,12 @@
 </template>
 
 <script>
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 export default {
   props: ["courseDetails"],
+  components: { VueSlickCarousel },
 };
 </script>
 
@@ -48,9 +65,27 @@ output {
 }
 .courseIntro {
   margin-top: 100px;
-  img {
-    @include md {
-      margin-bottom: 30px;
+  .gallery {
+    width: 95%;
+    .item {
+      padding-left: 20px;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      @include md {
+        margin-bottom: 30px;
+      }
+      @include xs {
+        height: 300px;
+      }
+    }
+    @include xs {
+      width: 90%;
+      margin: 0 10px 0;
     }
   }
   .details {

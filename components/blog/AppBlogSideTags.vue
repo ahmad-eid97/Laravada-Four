@@ -1,5 +1,8 @@
 <template>
-  <div class="side-bar-widget" v-if="blogDetails.tags.length >= 1">
+  <div
+    class="side-bar-widget"
+    v-if="blogDetails && blogDetails.tags.length >= 1"
+  >
     <h3 class="title">Tag Cloud</h3>
     <ul class="side-bar-widget-tag">
       <li v-for="tag in blogDetails.tags" :key="tag">

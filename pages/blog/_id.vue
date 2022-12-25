@@ -1,21 +1,17 @@
 <template>
   <div class="home">
-    <app-blog-heading></app-blog-heading>
+    <app-blog-heading />
     <div class="blog-details-area pt-100 pb-70">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <app-blog-body :blogDetails="blogDetails"></app-blog-body>
+            <app-blog-body :blogDetails="blogDetails" />
           </div>
           <div class="col-lg-4">
-            <app-blog-side-archive
-              :blogDetails="blogDetails"
-            ></app-blog-side-archive>
-            <app-blog-side-blogs
-              :latestBlogs="latestBlogs"
-            ></app-blog-side-blogs>
-            <app-blog-side-tags :blogDetails="blogDetails"></app-blog-side-tags>
-            <app-blog-gallery :blogDetails="blogDetails"></app-blog-gallery>
+            <app-blog-side-archive :blogDetails="blogDetails" />
+            <app-blog-side-blogs :latestBlogs="latestBlogs" />
+            <app-blog-side-tags :blogDetails="blogDetails" />
+            <app-blog-gallery :blogDetails="blogDetails" />
           </div>
         </div>
       </div>
@@ -39,16 +35,22 @@ export default {
     AppBlogGallery,
     AppBlogSideArchive,
   },
-  async asyncData({ $axios, params }) {
-    const blogDetails = await $axios.get(`/blogs/${params.id}`);
-    console.log(blogDetails);
-    console.log(params.id);
+  async asyncData({ $axios, params, app }) {
+    const BLOG_DETAILS = await $axios.get(`/blogs/${params.id}`, {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
-    const latestBlogs = await $axios.get(`/blogs/?latest=1`);
+    const LATEST_BLOGS = await $axios.get(`/blogs/?latest=1`, {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
     return {
-      blogDetails: blogDetails.data.data,
-      latestBlogs: latestBlogs.data.data,
+      blogDetails: BLOG_DETAILS.data.data,
+      latestBlogs: LATEST_BLOGS.data.data.blogs,
     };
   },
 };

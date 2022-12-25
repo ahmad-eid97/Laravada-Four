@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-article">
+  <div class="blog-article" v-if="blogDetails">
     <div class="blog-article-img">
       <img :src="blogDetails.image" alt="Images" />
       <div class="blog-article-tag">

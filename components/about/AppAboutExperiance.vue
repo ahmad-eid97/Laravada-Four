@@ -119,12 +119,6 @@
                 </ul>
               </div>
             </div>
-            <p class="about-content-text">
-              Aenean sollicitudin, lorem quis bibendum auctor, nisi elit
-              consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit
-              amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum
-              velit.
-            </p>
           </div>
         </div>
       </div>

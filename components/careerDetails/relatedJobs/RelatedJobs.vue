@@ -1,7 +1,6 @@
 <template>
   <div class="relatedJobs">
-    <h6>Trending Jobs</h6>
-    <h1>All Popular Listed jobs</h1>
+    <h1>Related Jobs</h1>
     <div class="row justify-content-center">
       <div
         v-for="job in jobsList"
@@ -25,13 +24,6 @@
             {{ job.title.substring(0, 50) }}
             {{ job.title.length > 50 ? "..." : "" }}
           </h3>
-          <div class="tags" v-if="job.skills">
-            <span
-              v-for="skill in job.skills.split('\r\n').slice(0, 3)"
-              :key="skill"
-              >{{ skill }}</span
-            >
-          </div>
         </div>
       </div>
     </div>

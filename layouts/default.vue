@@ -18,7 +18,11 @@ export default {
     AppHeader,
     AppFooter,
   },
-  watch: {},
+  watch: {
+    $route(to, from) {
+      window.scrollTo(0, 0);
+    },
+  },
 
   created() {
     // this.$route.params.lang = localStorage.getItem('code');
@@ -38,6 +42,7 @@ export default {
   },
   mounted() {
     // this.$route.params.lang  = this.lang;
+    window.scrollTo(0, 0);
   },
 };
 </script>

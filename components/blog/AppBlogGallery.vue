@@ -1,5 +1,8 @@
 <template>
-  <div class="side-bar-widget" v-if="blogDetails.gallery.length >= 1">
+  <div
+    class="side-bar-widget"
+    v-if="blogDetails && blogDetails.gallery.length >= 1"
+  >
     <h3 class="title">Gallery</h3>
     <ul class="blog-gallery">
       <li

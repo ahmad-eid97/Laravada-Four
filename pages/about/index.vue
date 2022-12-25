@@ -30,6 +30,7 @@ import AppAboutSecurity from "../../components/about/AppAboutSecurity.vue";
 
 export default {
   name: "About",
+  scrollToTop: true,
   components: {
     AppAboutHeading,
     AppAboutIntro,

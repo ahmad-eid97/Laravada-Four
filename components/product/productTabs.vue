@@ -1,15 +1,10 @@
 <template>
-  <div class="courseDetailsTabs">
+  <div class="productTabs">
     <div class="tabs">
       <span
-        @click="currentTab = 'instructor'"
-        :class="currentTab === 'instructor' ? 'active' : ''"
-        >Instructor</span
-      >
-      <span
-        @click="currentTab = 'video'"
-        :class="currentTab === 'video' ? 'active' : ''"
-        >video</span
+        @click="currentTab = 'description'"
+        :class="currentTab === 'description' ? 'active' : ''"
+        >Description</span
       >
       <span
         @click="currentTab = 'reviews'"
@@ -17,54 +12,33 @@
         >Reviews</span
       >
     </div>
-    <div v-if="currentTab === 'instructor'" class="instructor">
-      <h3>
-        <i class="fa-regular fa-chalkboard-user"></i> Instructor Name:
-        {{ courseDetails.instructor_name }}
-      </h3>
-      <h4>
-        <i class="fa-solid fa-user-tie"></i> Instructor Occupation:
-        {{ courseDetails.instructor_occupation }}
-      </h4>
-      <p>{{ courseDetails.instructor_details }}</p>
+    <div v-if="currentTab === 'description'" class="description">
+      <p class="text">{{ productDetails.description }}</p>
     </div>
 
-    <div v-if="currentTab === 'video'" class="video">
-      <h3>Course Intro Video</h3>
-      <div class="videoWrapper">
-        <iframe
-          width="560"
-          height="315"
-          :src="courseDetails.course_video.replace('watch?v=', 'embed/')"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-
-    <div v-if="currentTab === 'reviews'">
-      <reviews-tab :reviews="courseDetails.reviews" />
+    <div v-if="currentTab === 'reviews'" class="reviews">
+      <product-reviews :reviews="productDetails.reviews" />
     </div>
   </div>
 </template>
 
 <script>
-import reviewsTab from "../../components/courseDetails/reviewsTab.vue";
+import productReviews from "./productReviews.vue";
 export default {
-  props: ["courseDetails"],
+  props: ["productDetails"],
   components: {
-    reviewsTab,
+    productReviews,
   },
   data() {
     return {
-      currentTab: "instructor",
+      currentTab: "description",
     };
   },
 };
 </script>
 
 <style scoped lang="scss">
-.courseDetailsTabs {
+.productTabs {
   margin-top: 100px;
   .tabs {
     display: flex;
@@ -105,12 +79,15 @@ export default {
       z-index: 1;
     }
   }
-  .instructor,
-  .video,
+  .description,
   .reviews {
     border: 1px solid rgb(230, 230, 230);
     border-radius: 10px;
     padding: 20px;
+    p.text {
+      font-size: 1.2rem;
+      margin: 0;
+    }
     h3 {
       text-align: center;
       margin: 10px 0 30px;

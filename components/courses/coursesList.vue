@@ -9,9 +9,14 @@
       >
         <div class="course">
           <div class="header">
-            <span class="sale">SALE</span>
+            <span
+              class="sale"
+              v-if="course.previous_price > course.current_price"
+              >SALE</span
+            >
             <img
-              :src="course.image"
+              v-if="course.images"
+              :src="course.images[0]"
               alt="courseImage"
               @click="$router.push(localePath(`/course/${course.id}`))"
             />

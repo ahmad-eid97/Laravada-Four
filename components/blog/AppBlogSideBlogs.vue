@@ -1,9 +1,9 @@
 <template>
-  <div class="side-bar-widget" v-if="latestBlogs.blogs.length >= 1">
+  <div class="side-bar-widget" v-if="latestBlogs.length >= 1">
     <h3 class="title">Latest Blog</h3>
     <div class="widget-popular-post">
       <article
-        v-for="blog in latestBlogs.blogs.slice(0, 4)"
+        v-for="blog in latestBlogs.slice(0, 4)"
         :key="blog.id"
         class="item"
         @click="$router.push(localePath(`/blog/${blog.id}`))"

@@ -7,6 +7,11 @@
           <h1>
             {{ bannerHead.find((one) => one.key === "banner_title").value }}
           </h1>
+          <p>
+            {{
+              bannerHead.find((one) => one.key === "banner_description").value
+            }}
+          </p>
           <a
             :href="bannerHead.find((one) => one.key === 'banner_link').value"
             class="btn"
@@ -66,6 +71,10 @@ export default {
   font-weight: 400;
   line-height: 114px;
   padding-top: 70px;
+}
+
+.intro .item p {
+  font-size: 1.5rem !important;
 }
 
 @include xs {
