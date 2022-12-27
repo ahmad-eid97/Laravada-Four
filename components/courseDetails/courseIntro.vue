@@ -42,7 +42,7 @@
             <p>${{ courseDetails.current_price }}</p>
           </div>
 
-          <button>Add to cart</button>
+          <button @click="addToCart">Add to cart</button>
         </div>
       </div>
     </div>
@@ -56,6 +56,30 @@ import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 export default {
   props: ["courseDetails"],
   components: { VueSlickCarousel },
+  methods: {
+    addToCart() {
+      const item = {
+        id: this.courseDetails.id,
+        images: this.courseDetails.images,
+        title: this.courseDetails.title,
+        current_price: this.courseDetails.current_price,
+        quantity: 1,
+      };
+      let cartItems = localStorage.getItem("laravadaCart")
+        ? JSON.parse(localStorage.getItem("laravadaCart"))
+        : [];
+
+      let aleradyExists = cartItems.find((one) => one.id === item.id);
+      if (aleradyExists) {
+        aleradyExists.quantity = aleradyExists.quantity + 1;
+      } else {
+        cartItems.unshift(item);
+      }
+      this.$store.state.cartItems = cartItems;
+      localStorage.setItem("laravadaCart", JSON.stringify(cartItems));
+      this.$toast.success("Product added to cart successfully");
+    },
+  },
 };
 </script>
 

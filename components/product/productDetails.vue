@@ -12,13 +12,37 @@
     <p class="content">Organizer: {{ eventDetails.organizer }}</p>
     <p class="content">venue: {{ eventDetails.venue }}</p>
     <p class="content">{{ eventDetails.content }}</p> -->
-    <button>ADD TO CART</button>
+    <button @click="addToCart">ADD TO CART</button>
   </div>
 </template>
 
 <script>
 export default {
   props: ["productDetails"],
+  methods: {
+    addToCart() {
+      const item = {
+        id: this.productDetails.id,
+        images: this.productDetails.images,
+        title: this.productDetails.title,
+        current_price: this.productDetails.current_price,
+        quantity: 1,
+      };
+      let cartItems = localStorage.getItem("laravadaCart")
+        ? JSON.parse(localStorage.getItem("laravadaCart"))
+        : [];
+
+      let aleradyExists = cartItems.find((one) => one.id === item.id);
+      if (aleradyExists) {
+        aleradyExists.quantity = aleradyExists.quantity + 1;
+      } else {
+        cartItems.unshift(item);
+      }
+      this.$store.state.cartItems = cartItems;
+      localStorage.setItem("laravadaCart", JSON.stringify(cartItems));
+      this.$toast.success("Product added to cart successfully");
+    },
+  },
 };
 </script>
 

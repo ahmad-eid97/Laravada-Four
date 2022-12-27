@@ -43,6 +43,9 @@ export default {
   mounted() {
     // this.$route.params.lang  = this.lang;
     window.scrollTo(0, 0);
+    this.$store.state.cartItems = localStorage.getItem("laravadaCart")
+      ? JSON.parse(localStorage.getItem("laravadaCart"))
+      : [];
   },
 };
 </script>

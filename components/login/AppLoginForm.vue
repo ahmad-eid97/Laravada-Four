@@ -1,5 +1,6 @@
 <template>
   <div class="user-area pt-100 pb-70">
+    <!-- <Loader /> -->
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
@@ -88,16 +89,21 @@
 </template>
 
 <script>
+// import Loader from "../UIs/Loader.vue";
 import * as EmailValidator from "email-validator";
 
 export default {
   name: "AppLoginForm",
+  components: {
+    // Loader,
+  },
   data() {
     return {
       email: "",
       password: "",
       validEmail: true,
       emptyError: false,
+      loading: false,
     };
   },
   methods: {

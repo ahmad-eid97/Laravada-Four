@@ -20,8 +20,11 @@
               alt="courseImage"
               @click="$router.push(localePath(`/course/${course.id}`))"
             />
-            <div class="cart" :class="$i18n.locale === 'ar' ? 'arabic' : ''">
-              <span class="text">Add To Cart</span>
+            <div
+              class="addToCart"
+              :class="$i18n.locale === 'ar' ? 'arabic' : ''"
+            >
+              <span class="text" @click="addToCart(course)">Add To Cart</span>
               <span><i class="fa-regular fa-cart-plus"></i></span>
             </div>
           </div>
@@ -62,6 +65,30 @@
 <script>
 export default {
   props: ["coursesList"],
+  methods: {
+    addToCart(course) {
+      const item = {
+        id: course.id,
+        images: course.images,
+        title: course.title,
+        current_price: course.current_price,
+        quantity: 1,
+      };
+      let cartItems = localStorage.getItem("laravadaCart")
+        ? JSON.parse(localStorage.getItem("laravadaCart"))
+        : [];
+
+      let aleradyExists = cartItems.find((one) => one.id === item.id);
+      if (aleradyExists) {
+        aleradyExists.quantity = aleradyExists.quantity + 1;
+      } else {
+        cartItems.unshift(item);
+      }
+      this.$store.state.cartItems = cartItems;
+      localStorage.setItem("laravadaCart", JSON.stringify(cartItems));
+      this.$toast.success("Product added to cart successfully");
+    },
+  },
 };
 </script>
 
@@ -93,7 +120,7 @@ output {
         z-index: 2;
         margin: 0 10px;
       }
-      .cart {
+      .addToCart {
         position: absolute;
         bottom: 0;
         right: 0;

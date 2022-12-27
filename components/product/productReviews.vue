@@ -106,6 +106,8 @@ export default {
         }
       );
 
+      console.log(response);
+
       if (response.data.success)
         this.$toast.success("Review added successfully");
 
