@@ -12,124 +12,83 @@
       </div>
       <cart />
     </div>
-    <b-navbar toggleable="lg">
+    <b-navbar toggleable="lg" class="d-flex justify-content-between">
       <b-navbar-brand :href="localePath('/')">
         <img src="assets/images/logo.png" alt="logoImage" />
       </b-navbar-brand>
 
-      <b-navbar-toggle target="navbar-toggle-collapse">
-        <template #default="{ expanded }">
-          <span
-            class="menu-trigger"
-            :class="expanded ? 'active' : ''"
-            id="menu03"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </template>
-      </b-navbar-toggle>
-
-      <b-collapse
-        id="navbar-toggle-collapse"
-        class="ml-auto justify-content-end"
-        is-nav
-      >
-        <b-navbar-nav class="align-items-center">
-          <b-nav-item active-class="active" :to="localePath('/')" exact>
-            Home</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('about')"
-            >About</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('services')"
-            >Solutions</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('/testimonials')"
-            >Insight</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('/blogs')"
-            >News</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('/careers')"
-            >Career</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('/events')"
-            >Events</b-nav-item
-          >
-          <b-nav-item class="m-0">
-            <a href="#" class="btn">Get started</a>
-          </b-nav-item>
+      <div class="d-flex align-items-center">
+        <div class="smallScr">
           <langSwitch></langSwitch>
-          <!-- <b-nav-item class="m-0" @click="side = !side">
-            <i class="fa-solid fa-plus d-lg-block d-none"></i>
-            <span class="d-lg-none d-block">Side Bar</span>
-          </b-nav-item> -->
-          <b-nav-item class="m-0 cartIcon" @click="openCart = !openCart">
+          <div class="m-0 cartIcon" @click="openCart = !openCart">
             <span>{{ $store.state.cartItems.length }}</span>
             <i class="fa-regular fa-cart-plus"></i>
-          </b-nav-item>
-          <div v-if="$store.state.user" class="logout" @click="logout">
-            <i class="fa-regular fa-right-from-bracket"></i>
           </div>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
-    <div :class="side ? 'opend' : ''" class="side-bar">
-      <div class="content-wrapper">
-        <div class="close-btn">
-          <i class="fa-solid fa-xmark" @click="side = !side"></i>
-        </div>
-        <div class="widge">
-          <h4>LARAVADA</h4>
-          <p>
-            Fusce ut ipsum tincidunt, porta nisl sollicitudin, vulputate nunc.
-            Cras commodo leo ac nunc convallis ets efficitur.
-          </p>
-        </div>
-        <div class="widge">
-          <img
-            class="img-fluid"
-            src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/cloud-2-300x216.png"
-            alt=""
-          />
         </div>
 
-        <div class="widge">
-          <h4>RECENT TWEETS</h4>
+        <b-navbar-toggle target="navbar-toggle-collapse">
+          <template #default="{ expanded }">
+            <span
+              class="menu-trigger"
+              :class="expanded ? 'active' : ''"
+              id="menu03"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </template>
+        </b-navbar-toggle>
+
+        <b-collapse
+          id="navbar-toggle-collapse"
+          class="ml-auto justify-content-end"
+          is-nav
+        >
+          <b-navbar-nav class="align-items-center">
+            <b-nav-item active-class="active" :to="localePath('/')" exact>
+              Home</b-nav-item
+            >
+            <b-nav-item active-class="active" :to="localePath('about')"
+              >About</b-nav-item
+            >
+            <b-nav-item active-class="active" :to="localePath('services')"
+              >Solutions</b-nav-item
+            >
+            <b-nav-item active-class="active" :to="localePath('/testimonials')"
+              >Insight</b-nav-item
+            >
+            <b-nav-item active-class="active" :to="localePath('/blogs')"
+              >News</b-nav-item
+            >
+            <b-nav-item active-class="active" :to="localePath('/careers')"
+              >Career</b-nav-item
+            >
+            <b-nav-item active-class="active" :to="localePath('/events')"
+              >Events</b-nav-item
+            >
+            <b-nav-item v-if="$store.state.user" @click="logout">
+              Logout
+            </b-nav-item>
+            <b-nav-item class="m-0">
+              <a href="#" class="btn">Get started</a>
+            </b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+
+        <div class="largeSrc">
+          <langSwitch></langSwitch>
+          <div class="m-0 cartIcon" @click="openCart = !openCart">
+            <span>{{ $store.state.cartItems.length }}</span>
+            <i class="fa-regular fa-cart-plus"></i>
+          </div>
         </div>
-        <div class="widge">
-          <h4>CONTACT US</h4>
-          <ul>
-            <li>
-              <span>
-                <i class="fa-solid fa-house-chimney"></i>
-              </span>
-              <div>
-                <p>12345 North Main Street,<br />New York, NY 555555</p>
-              </div>
-            </li>
-            <li>
-              <span>
-                <i class="fa-solid fa-phone"></i>
-              </span>
-              <div>
-                <p>1.800.555.6789</p>
-              </div>
-            </li>
-            <li>
-              <span>
-                <i class="fa-solid fa-envelope"></i>
-              </span>
-              <div>
-                <p>support@yoursite.com</p>
-              </div>
-            </li>
-          </ul>
+
+        <div v-if="$store.state.user" class="logout" @click="logout">
+          <i class="fa-regular fa-right-from-bracket"></i>
         </div>
       </div>
-    </div>
+    </b-navbar>
   </header>
 </template>
 
@@ -184,6 +143,10 @@ header {
   min-height: 60px;
   background-color: #fff;
   z-index: 9999;
+  @include sm {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }
 .cart {
   width: 390px;
@@ -244,6 +207,9 @@ header {
   &.opened {
     transform: translateX(0);
   }
+  @include xs {
+    width: 350px;
+  }
 }
 .cartIcon {
   border: 1px solid var(--main-color);
@@ -266,9 +232,17 @@ header {
     display: grid;
     place-content: center;
     font-size: 1.2rem;
+    @include sm {
+      font-size: 1rem;
+    }
   }
   i {
     color: var(--main-color);
+  }
+  @include sm {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px !important;
   }
   &:hover {
     background-color: var(--main-color);
@@ -286,7 +260,25 @@ header {
   display: grid;
   place-items: center;
   font-size: 1.2rem;
+  margin: 0 20px;
   cursor: pointer;
+  @include md {
+    display: none;
+  }
+}
+.smallScr {
+  align-items: center;
+  display: none;
+  @include md {
+    display: flex;
+  }
+}
+.largeSrc {
+  align-items: center;
+  display: flex;
+  @include md {
+    display: none;
+  }
 }
 .navbar-brand {
   padding-top: 0px !important;
@@ -320,6 +312,7 @@ header {
 .navbar-toggler:focus {
   border: none;
   box-shadow: none;
+  margin: 0;
 }
 .menu-trigger,
 .menu-trigger span {

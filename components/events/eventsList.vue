@@ -15,9 +15,9 @@
               <span>{{ event.ticket_cost }}$</span>
             </div>
             <div class="inside">
-              <h1 @click="$router.push(localePath(`/event/${event.id}`))">
+              <h2 @click="$router.push(localePath(`/event/${event.id}`))">
                 {{ event.title }}
-              </h1>
+              </h2>
               <p>{{ event.date }}</p>
             </div>
           </div>
@@ -119,8 +119,10 @@ export default {
         gap: 10px;
         span {
           background: #ff5e14;
-          padding: 1px 20px;
+          padding: 1px 15px;
           border-radius: 20px;
+          margin-bottom: 5px;
+          text-align: center;
           &:last-of-type {
             background: #11a8fd;
           }

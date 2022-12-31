@@ -236,6 +236,9 @@ ${orderedItems.map(
         }
         img {
           width: 150px;
+          min-width: 150px;
+          height: 120px;
+          object-fit: contain;
         }
         .details {
           display: flex;

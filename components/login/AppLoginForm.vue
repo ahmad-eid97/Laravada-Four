@@ -1,6 +1,5 @@
 <template>
   <div class="user-area pt-100 pb-70">
-    <!-- <Loader /> -->
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
@@ -89,14 +88,11 @@
 </template>
 
 <script>
-// import Loader from "../UIs/Loader.vue";
 import * as EmailValidator from "email-validator";
 
 export default {
   name: "AppLoginForm",
-  components: {
-    // Loader,
-  },
+  components: {},
   data() {
     return {
       email: "",
@@ -128,6 +124,8 @@ export default {
         return this.$toast.error("Email is invalid!");
       }
 
+      this.$store.state.showLoader = true;
+
       const response = await this.$axios.post("/users/auth/login", data);
 
       if (!response.data.success) {
@@ -145,6 +143,8 @@ export default {
         path: "/",
         maxAge: 60 * 60 * 24 * 7,
       });
+
+      this.$store.state.showLoader = false;
 
       this.$router.push(this.localePath("/"));
     },

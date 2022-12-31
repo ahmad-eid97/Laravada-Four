@@ -131,26 +131,32 @@ export default {
         return this.$toast.error("Email is invalid!");
       }
 
+      this.$store.state.showLoader = true;
+
       const response = await this.$axios.post("/users/auth/register", data);
 
       if (!response.data.success) {
         if (response.data.data) {
           if (response.data.data.name) {
             response.data.data.name.forEach((error) => {
+              this.$store.state.showLoader = false;
               return this.$toast.error(error);
             });
           }
           if (response.data.data.email) {
             response.data.data.email.forEach((error) => {
+              this.$store.state.showLoader = false;
               return this.$toast.error(error);
             });
           }
           if (response.data.data.password) {
             response.data.data.password.forEach((error) => {
+              this.$store.state.showLoader = false;
               return this.$toast.error(error);
             });
           }
         } else {
+          this.$store.state.showLoader = false;
           return this.$toast.error(response.data.message);
         }
         return;
@@ -170,6 +176,8 @@ export default {
         path: "/",
         maxAge: 60 * 60 * 24 * 7,
       });
+
+      this.$store.state.showLoader = false;
 
       this.$router.push(this.localePath("/"));
     },
