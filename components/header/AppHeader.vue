@@ -40,42 +40,6 @@
           </template>
         </b-navbar-toggle>
 
-        <b-collapse
-          id="navbar-toggle-collapse"
-          class="ml-auto justify-content-end"
-          is-nav
-        >
-          <b-navbar-nav class="align-items-center">
-            <b-nav-item active-class="active" :to="localePath('/')" exact>
-              Home</b-nav-item
-            >
-            <b-nav-item active-class="active" :to="localePath('about')"
-              >About</b-nav-item
-            >
-            <b-nav-item active-class="active" :to="localePath('services')"
-              >Solutions</b-nav-item
-            >
-            <b-nav-item active-class="active" :to="localePath('/testimonials')"
-              >Insight</b-nav-item
-            >
-            <b-nav-item active-class="active" :to="localePath('/blogs')"
-              >News</b-nav-item
-            >
-            <b-nav-item active-class="active" :to="localePath('/careers')"
-              >Career</b-nav-item
-            >
-            <b-nav-item active-class="active" :to="localePath('/events')"
-              >Events</b-nav-item
-            >
-            <b-nav-item v-if="$store.state.user" @click="logout">
-              Logout
-            </b-nav-item>
-            <b-nav-item class="m-0">
-              <a href="#" class="btn">Get started</a>
-            </b-nav-item>
-          </b-navbar-nav>
-        </b-collapse>
-
         <div class="largeSrc">
           <langSwitch></langSwitch>
           <div class="m-0 cartIcon" @click="openCart = !openCart">
@@ -88,6 +52,41 @@
           <i class="fa-regular fa-right-from-bracket"></i>
         </div>
       </div>
+      <b-collapse
+        id="navbar-toggle-collapse"
+        class="ml-auto justify-content-end"
+        is-nav
+      >
+        <b-navbar-nav class="align-items-center">
+          <b-nav-item active-class="active" :to="localePath('/')" exact>
+            Home</b-nav-item
+          >
+          <b-nav-item active-class="active" :to="localePath('about')"
+            >About</b-nav-item
+          >
+          <b-nav-item active-class="active" :to="localePath('services')"
+            >Solutions</b-nav-item
+          >
+          <b-nav-item active-class="active" :to="localePath('/testimonials')"
+            >Insight</b-nav-item
+          >
+          <b-nav-item active-class="active" :to="localePath('/blogs')"
+            >News</b-nav-item
+          >
+          <b-nav-item active-class="active" :to="localePath('/careers')"
+            >Career</b-nav-item
+          >
+          <b-nav-item active-class="active" :to="localePath('/events')"
+            >Events</b-nav-item
+          >
+          <b-nav-item v-if="$store.state.user" @click="logout">
+            Logout
+          </b-nav-item>
+          <b-nav-item class="m-0">
+            <a href="#" class="btn">Get started</a>
+          </b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
     </b-navbar>
   </header>
 </template>
