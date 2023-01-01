@@ -39,18 +39,6 @@
             </span>
           </template>
         </b-navbar-toggle>
-
-        <div class="largeSrc">
-          <langSwitch></langSwitch>
-          <div class="m-0 cartIcon" @click="openCart = !openCart">
-            <span>{{ $store.state.cartItems.length }}</span>
-            <i class="fa-regular fa-cart-plus"></i>
-          </div>
-        </div>
-
-        <div v-if="$store.state.user" class="logout" @click="logout">
-          <i class="fa-regular fa-right-from-bracket"></i>
-        </div>
       </div>
       <b-collapse
         id="navbar-toggle-collapse"
@@ -79,13 +67,24 @@
           <b-nav-item active-class="active" :to="localePath('/events')"
             >Events</b-nav-item
           >
-          <b-nav-item v-if="$store.state.user" @click="logout">
+          <b-nav-item v-if="$store.state.user" @click="logout" class="outLarge">
             Logout
           </b-nav-item>
           <b-nav-item class="m-0">
             <a href="#" class="btn">Get started</a>
           </b-nav-item>
         </b-navbar-nav>
+
+        <div class="largeScr">
+          <langSwitch></langSwitch>
+          <div class="m-0 cartIcon" @click="openCart = !openCart">
+            <span>{{ $store.state.cartItems.length }}</span>
+            <i class="fa-regular fa-cart-plus"></i>
+          </div>
+          <div v-if="$store.state.user" class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
+        </div>
       </b-collapse>
     </b-navbar>
   </header>
@@ -265,6 +264,12 @@ header {
     display: none;
   }
 }
+.outLarge {
+  display: none;
+  @include md {
+    display: inline;
+  }
+}
 .smallScr {
   align-items: center;
   display: none;
@@ -272,7 +277,7 @@ header {
     display: flex;
   }
 }
-.largeSrc {
+.largeScr {
   align-items: center;
   display: flex;
   @include md {
