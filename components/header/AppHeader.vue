@@ -141,7 +141,7 @@ header {
   min-height: 60px;
   background-color: #fff;
   z-index: 9999;
-  @include sm {
+  @include md {
     padding-right: 10px;
     padding-left: 10px;
   }
