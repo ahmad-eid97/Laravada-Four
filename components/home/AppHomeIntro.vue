@@ -48,6 +48,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.intro {
+  padding-top: 0;
+}
 .intro .item-1 {
   background-color: rgba(255, 255, 255, 0);
   background-image: url("https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/avada-it-clouds1.png");
