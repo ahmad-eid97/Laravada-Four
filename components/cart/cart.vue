@@ -14,7 +14,7 @@
               {{ item.title.substring(0, 20) }}
               {{ item.title.length > 20 && "..." }}
             </h3>
-            <p>Qunatity: {{ item.quantity }}</p>
+            <p v-if="!item.type">Qunatity: {{ item.quantity }}</p>
             <p>Price: {{ item.current_price }}</p>
             <div v-if="!item.type">
               <button @click="decrease(item)">-</button>
@@ -85,7 +85,7 @@ export default {
   height: 100%;
   .wrapper {
     height: 100%;
-    padding: 20px 10px 130px;
+    padding: 20px 10px 170px;
     overflow-y: auto;
   }
   h2 {

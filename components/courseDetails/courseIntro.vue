@@ -74,7 +74,9 @@ export default {
         (one) => one.id === item.id && one.title === item.title
       );
       if (aleradyExists) {
-        aleradyExists.quantity = aleradyExists.quantity + 1;
+        // aleradyExists.quantity = aleradyExists.quantity + 1;
+        this.$toast.error("You are already enrolld in this course");
+        return;
       } else {
         cartItems.unshift(item);
       }
@@ -147,6 +149,7 @@ output {
       border: 1px solid var(--main-color);
       color: #fff;
       background-color: var(--main-color);
+      border-radius: 30px;
       &:hover {
         background-color: transparent;
         color: var(--main-color);

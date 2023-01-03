@@ -85,7 +85,8 @@ export default {
         (one) => one.id === item.id && one.title === item.title
       );
       if (aleradyExists) {
-        aleradyExists.quantity = aleradyExists.quantity + 1;
+        this.$toast.error("You are already enrolld in this course");
+        return;
       } else {
         cartItems.unshift(item);
       }
