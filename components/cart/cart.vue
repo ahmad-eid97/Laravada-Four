@@ -16,7 +16,7 @@
             </h3>
             <p>Qunatity: {{ item.quantity }}</p>
             <p>Price: {{ item.current_price }}</p>
-            <div>
+            <div v-if="!item.type">
               <button @click="decrease(item)">-</button>
               <button @click="increase(item)">+</button>
             </div>
@@ -49,7 +49,9 @@ export default {
   methods: {
     removeFromCart(cartItem) {
       let cartItems = this.$store.state.cartItems;
-      const updatedCart = cartItems.filter((item) => item.id !== cartItem.id);
+      const updatedCart = cartItems.filter(
+        (item) => item.id !== cartItem.id && item.title !== cartItem.title
+      );
       this.$store.state.cartItems = updatedCart;
       localStorage.setItem("laravadaCart", JSON.stringify(updatedCart));
       this.$toast.success("Product removed from cart successfully");
@@ -99,6 +101,7 @@ export default {
       width: 140px;
       min-width: 140px;
       height: 120px;
+      object-fit: contain;
     }
     .details {
       display: flex;

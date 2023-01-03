@@ -40,6 +40,7 @@ export default {
     "~plugins/swiperVue.js",
     "~plugins/date-fns.js",
     "~plugins/vueToastify.js",
+    "~plugins/sweatAlert.js",
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

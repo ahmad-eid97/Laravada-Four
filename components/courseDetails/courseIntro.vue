@@ -42,7 +42,7 @@
             <p>${{ courseDetails.current_price }}</p>
           </div>
 
-          <button @click="addToCart">Add to cart</button>
+          <button @click="addToCart">Enroll In Course</button>
         </div>
       </div>
     </div>
@@ -64,12 +64,15 @@ export default {
         title: this.courseDetails.title,
         current_price: this.courseDetails.current_price,
         quantity: 1,
+        type: "course",
       };
       let cartItems = localStorage.getItem("laravadaCart")
         ? JSON.parse(localStorage.getItem("laravadaCart"))
         : [];
 
-      let aleradyExists = cartItems.find((one) => one.id === item.id);
+      let aleradyExists = cartItems.find(
+        (one) => one.id === item.id && one.title === item.title
+      );
       if (aleradyExists) {
         aleradyExists.quantity = aleradyExists.quantity + 1;
       } else {
