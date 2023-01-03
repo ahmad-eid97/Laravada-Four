@@ -9,6 +9,8 @@ body {
   color: #2c3e50;
   scroll-behavior: unset !important;
   position: relative;
+  overflow-x: hidden;
+  min-width: 100% !important;
 }
 * {
   transition: all 0.3s linear;
