@@ -13,6 +13,7 @@
             v-if="product.category"
             class="category"
             :style="{ backgroundColor: random_rgba() }"
+            @click="$router.push(`/product-category/${product.category.id}`)"
             >{{ product.category.name }}</span
           >
           <img
@@ -102,6 +103,7 @@ export default {
       right: 10px;
       padding: 0px 10px;
       border-radius: 5px;
+      cursor: pointer;
     }
     img {
       width: 100%;
