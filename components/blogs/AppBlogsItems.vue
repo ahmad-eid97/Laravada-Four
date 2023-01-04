@@ -5,17 +5,25 @@
         <span class="sp-color2">Latest Blog</span>
         <h2>Let’s Check Some Latest Blog</h2>
       </div>
-      <div class="row pt-45" v-if="blogs.blogs.length >= 1">
+      <div
+        class="row pt-45 justify-content-center"
+        v-if="blogs.blogs.length >= 1"
+      >
         <div
           v-for="blog in blogs.blogs"
           :key="blog.id"
-          class="col-lg-4 col-md-6"
+          class="col-lg-4 col-md-6 mb-4"
           @click="$router.push(localePath(`/blog/${blog.id}`))"
         >
           <div class="blog-card">
             <div class="blog-img">
               <router-link to="blog">
-                <img :src="blog.image" alt="Blog Images" />
+                <img
+                  v-if="!blog.image"
+                  src="/assets/images/noImage.png"
+                  alt="Blog Image"
+                />
+                <img v-if="blog.image" :src="blog.image" alt="Blog Image" />
               </router-link>
               <div class="blog-tag">
                 <h3>{{ $date(new Date(blog.publish_date), "dd") }}</h3>
@@ -103,6 +111,7 @@ export default {
   transition: 0.9s;
   border: 1px solid #f1f1f1;
   transform: translateY(0px);
+  height: 100%;
 }
 .blog-card:hover {
   transform: translateY(-15px);

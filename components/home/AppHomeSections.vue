@@ -13,7 +13,7 @@
             <img class="img-fluid" :src="service.image" :alt="service.title" />
           </a>
         </div>
-        <p>
+        <p v-if="service.short_description">
           {{ service.short_description.substring(0, 200) + "..." }}
         </p>
       </div>
