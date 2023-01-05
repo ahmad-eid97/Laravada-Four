@@ -7,10 +7,10 @@
       </div>
       <div
         class="row pt-45 justify-content-center"
-        v-if="blogs.blogs.length >= 1"
+        v-if="allBlogs.blogs.length >= 1"
       >
         <div
-          v-for="blog in blogs.blogs"
+          v-for="blog in allBlogs.blogs"
           :key="blog.id"
           class="col-lg-4 col-md-6 mb-4"
           @click="$router.push(localePath(`/blog/${blog.id}`))"
@@ -23,7 +23,12 @@
                   src="/assets/images/noImage.png"
                   alt="Blog Image"
                 />
-                <img v-if="blog.image" :src="blog.image" alt="Blog Image" />
+                <img
+                  v-if="blog.image"
+                  :src="blog.image"
+                  alt="Blog Image"
+                  @error="setAltImg"
+                />
               </router-link>
               <div class="blog-tag">
                 <h3>{{ $date(new Date(blog.publish_date), "dd") }}</h3>
@@ -52,15 +57,13 @@
         </div>
         <div class="col-lg-12 col-md-12 text-center">
           <div class="pagination-area">
-            <a href="#" class="page-numbers">
-              <i class="fa-solid fa-arrow-left"></i>
-            </a>
-            <span class="page-numbers current" aria-current="page">1</span>
-            <a href="#" class="page-numbers">2</a>
-            <a href="#" class="page-numbers">3</a>
-            <a href="#" class="page-numbers">
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <b-pagination
+              v-model="allBlogs.meta.current_page"
+              :total-rows="allBlogs.meta.total"
+              :per-page="allBlogs.meta.per_page"
+              aria-controls="my-table"
+              @change="changePage"
+            ></b-pagination>
           </div>
         </div>
       </div>
@@ -72,6 +75,21 @@
 export default {
   name: "AppBlogsItems",
   props: ["blogs"],
+  data() {
+    return {
+      allBlogs: this.blogs,
+    };
+  },
+  methods: {
+    setAltImg(event) {
+      event.target.src = "/assets/images/noImage.png";
+    },
+    async changePage(pageNum) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const response = await this.$axios.get(`/blogs?page=${pageNum}`);
+      this.allBlogs = response.data.data;
+    },
+  },
 };
 </script>
 
