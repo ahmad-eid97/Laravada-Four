@@ -337,7 +337,7 @@ header {
 }
 .active .nav-link,
 .nav-link:hover {
-  /* color: rgb(98, 57, 189); */
+  color: var(--main-color) !important;
 }
 
 .navbar-toggler,
@@ -503,7 +503,7 @@ nav .btn:hover {
 }
 
 .nav-item:hover a.active {
-  color: #fff !important;
+  color: var(--main-color) !important;
 }
 
 @media screen and (max-width: 991px) {
