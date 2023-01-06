@@ -100,15 +100,27 @@ export default {
   line-height: 30px;
   margin-bottom: 20px;
 }
+.solutions h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .solutions .icon {
-  margin-right: 20px;
-  background-color: rgb(98, 57, 189);
-  position: relative;
   animation: fusionExpandAndShow 1s 1 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+}
+.solution .icon i {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(98, 57, 189);
   font-size: 20px;
   color: #fff;
-  border-radius: 50%;
-  padding: 5px 10px;
+  display: grid;
+  place-items: center;
 }
 .solutions .solution h2 {
   color: rgb(9, 41, 51);

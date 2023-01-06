@@ -3,7 +3,7 @@
     <h3 class="title">Tag Cloud</h3>
     <ul class="side-bar-widget-tag">
       <li v-for="tag in serviceDetails.tags" :key="tag">
-        <a href="#">{{ tag }}</a>
+        <a href="#">{{ tag.name }}</a>
       </li>
     </ul>
   </div>
