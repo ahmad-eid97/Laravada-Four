@@ -46,10 +46,30 @@
         is-nav
       >
         <b-navbar-nav class="align-items-center">
-          <b-nav-item active-class="active" :to="localePath('/')" exact>
-            Home</b-nav-item
+          <b-nav-item
+            active-class="active"
+            :to="localePath(`/${item.link}`)"
+            exact
+            v-for="item in $store.state.topMenu"
+            :key="item.id"
           >
-          <b-nav-item active-class="active" :to="localePath('about')"
+            <span v-if="!item.child.length">{{ item.label }}</span>
+
+            <b-dropdown
+              :text="item.label"
+              block
+              class="m-2 dropdownBtn"
+              v-if="item.child.length"
+            >
+              <b-dropdown-item
+                v-for="child in item.child"
+                :key="child.id"
+                :to="'/' + child.link"
+                >{{ child.label }}</b-dropdown-item
+              >
+            </b-dropdown>
+          </b-nav-item>
+          <!-- <b-nav-item active-class="active" :to="localePath('about')"
             >About</b-nav-item
           >
           <b-nav-item active-class="active" :to="localePath('services')"
@@ -66,7 +86,7 @@
           >
           <b-nav-item active-class="active" :to="localePath('/events')"
             >Events</b-nav-item
-          >
+          > -->
           <b-nav-item v-if="$store.state.user" @click="logout" class="outLarge">
             Logout
           </b-nav-item>
@@ -323,7 +343,8 @@ header {
   max-width: 162px;
   height: auto;
 }
-.nav-item {
+.nav-item,
+.dropdownBtn {
   position: relative;
   margin: 0 20px;
   justify-content: center;
@@ -494,7 +515,8 @@ nav .btn:hover {
   margin: -4px 0 0 12px;
 }
 
-.nav-item a.active {
+.nav-item a.active,
+.dropdownBtn a.active {
   color: rgb(98, 57, 189) !important;
 }
 
@@ -514,7 +536,8 @@ nav .btn:hover {
     z-index: 9999;
     top: 120%;
   }
-  .nav-item {
+  .nav-item,
+  .dropdownBtn {
     width: 100%;
     border-bottom: 1px solid #e5e5e5;
     background: #fff;
@@ -538,6 +561,24 @@ nav .btn:hover {
   }
   .side-bar.opend {
     width: 100%;
+  }
+}
+.dropdownBtn {
+  margin: 0 !important;
+  width: 60px;
+  display: flex !important;
+  button {
+    background: none !important;
+    padding: 0 !important;
+    color: rgb(121, 121, 121) !important;
+    text-transform: none !important;
+    font-size: 1.4rem !important;
+    font-family: unset !important;
+    font-weight: 400 !important;
+    box-shadow: none !important;
+  }
+  .dropdown-menu {
+    top: 40px !important;
   }
 }
 </style>
