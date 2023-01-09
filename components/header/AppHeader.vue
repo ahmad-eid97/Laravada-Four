@@ -64,29 +64,11 @@
               <b-dropdown-item
                 v-for="child in item.child"
                 :key="child.id"
-                :to="'/' + child.link"
+                :to="localePath('/' + child.link)"
                 >{{ child.label }}</b-dropdown-item
               >
             </b-dropdown>
           </b-nav-item>
-          <!-- <b-nav-item active-class="active" :to="localePath('about')"
-            >About</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('services')"
-            >Solutions</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('/testimonials')"
-            >Insight</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('/blogs')"
-            >News</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('/careers')"
-            >Career</b-nav-item
-          >
-          <b-nav-item active-class="active" :to="localePath('/events')"
-            >Events</b-nav-item
-          > -->
           <b-nav-item v-if="$store.state.user" @click="logout" class="outLarge">
             Logout
           </b-nav-item>

@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- <span v-if="$i18n.locale === 'en'" @click="switchLang"
-      ><nuxt-link :to="switchLocalePath('ar')">العربية</nuxt-link></span
-    >
-    <span v-if="$i18n.locale === 'ar'" @click="switchLang"
-      ><nuxt-link :to="switchLocalePath('en')">English</nuxt-link></span
-    > -->
     <span v-if="$i18n.locale === 'en'" @click="switchLang">العربية</span>
     <span v-if="$i18n.locale === 'ar'" @click="switchLang">English</span>
   </div>
