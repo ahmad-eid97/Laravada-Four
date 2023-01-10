@@ -7,11 +7,12 @@
         v-for="service in services.slice(0, 3)"
         :key="service.id"
         class="col-lg section"
+        @click="$router.push(localePath(`/service/${service.id}`))"
       >
         <div class="heading text-center">
-          <a href="#">
+          <nuxt-link :to="localePath(`/service/${service.id}`)">
             <img class="img-fluid" :src="service.image" :alt="service.title" />
-          </a>
+          </nuxt-link>
         </div>
         <p v-if="service.short_description">
           {{ service.short_description.substring(0, 200) + "..." }}
