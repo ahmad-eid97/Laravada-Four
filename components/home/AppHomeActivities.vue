@@ -168,7 +168,7 @@ export default {
 .activities .flip-box .flip-box-circle {
   height: 64px;
   width: 64px;
-  border: 1px solid;
+  border: 1px solid var(--main-color);
   border-radius: 50%;
   background-clip: padding-box;
   padding: 18px;
@@ -176,6 +176,7 @@ export default {
 }
 .activities .flip-box .flip-box-circle i {
   font-size: 24px;
+  color: var(--main-color);
 }
 .activities .flip-box h2 {
   color: rgb(51, 51, 51);
