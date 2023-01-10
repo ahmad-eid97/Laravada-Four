@@ -79,11 +79,9 @@ export default {
   text-align: center;
 }
 .about-partners .owl-carousel .item img {
-  max-height: 115px;
   width: auto;
   display: inline;
   max-width: 100%;
-  height: auto;
 }
 .about-partners .owl-carousel .owl-nav.disabled {
   display: none !important;

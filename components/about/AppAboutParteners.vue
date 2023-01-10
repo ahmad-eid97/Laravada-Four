@@ -79,7 +79,7 @@ export default {
   text-align: center;
 }
 .about-partners .owl-carousel .item img {
-  height: 80px !important;
+  height: 100px !important;
   width: auto;
   display: inline;
   max-width: 100%;
