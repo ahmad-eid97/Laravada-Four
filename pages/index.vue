@@ -3,6 +3,7 @@
     <app-home-intro :bannerHead="bannerHead"></app-home-intro>
     <app-home-partners :partners="partners"></app-home-partners>
     <app-home-features :features="features"></app-home-features>
+    <app-home-activities :activities="activities" />
     <app-home-solutions :solutions="solutions"></app-home-solutions>
     <app-home-banner :latestBlog="latestBlog"></app-home-banner>
     <app-home-sections :services="services"></app-home-sections>
@@ -20,6 +21,7 @@ import AppHomeFeatures from "../components/home/AppHomeFeatures.vue";
 import AppHomeSolutions from "../components/home/AppHomeSolutions.vue";
 import AppHomeSections from "../components/home/AppHomeSections.vue";
 import AppHomeBottomBanner from "../components/home/AppHomeBottomBanner.vue";
+import AppHomeActivities from "../components/home/AppHomeActivities.vue";
 
 export default {
   name: "Home",
@@ -54,6 +56,12 @@ export default {
       },
     });
 
+    const activities = await $axios.get("/sections/activities", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     return {
       bannerHead: bannerHead.data.data,
       partners: partners.data.data.partners,
@@ -62,6 +70,7 @@ export default {
       latestBlog: latestBlog.data.data.blogs.slice(0, 1),
       services: services.data.data.services,
       bottomBanner: bottomBanner.data.data,
+      activities: activities.data.data,
     };
   },
   components: {
@@ -72,6 +81,7 @@ export default {
     AppHomeSolutions,
     AppHomeSections,
     AppHomeBottomBanner,
+    AppHomeActivities,
   },
 };
 </script>
