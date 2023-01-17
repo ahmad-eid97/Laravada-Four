@@ -1,33 +1,31 @@
 <template>
   <section class="intro">
-    <!-- <VueSlickCarousel :arrows="true" :fade="true" :dots="false"> -->
-    <div class="item item-1">
-      <div class="row h-100 m-0 align-items-start">
-        <div class="col-md-6">
-          <h1>
-            {{ bannerHead.find((one) => one.key === "banner_title").value }}
-          </h1>
-          <p>
-            {{
-              bannerHead.find((one) => one.key === "banner_description").value
-            }}
-          </p>
-          <a
-            :href="bannerHead.find((one) => one.key === 'banner_link').value"
-            class="btn"
-            ><i class="fa-brands fa-mixcloud mx-2"></i> Explore solutions</a
-          >
-        </div>
-        <div class="col-md-6">
-          <img
-            class="img-fluid"
-            :src="bannerHead.find((one) => one.key === 'banner_image').value"
-            alt=""
-          />
+    <VueSlickCarousel :arrows="true" :fade="true" :dots="false">
+      <div
+        class="item item-1"
+        v-for="slide in slides"
+        :key="slide.id"
+        :style="{ backgroundImage: `url(${slide.background})` }"
+      >
+        <div class="row m-0 align-items-start">
+          <div class="overlay"></div>
+          <div class="col-md-6">
+            <h1>
+              {{ slide.title }}
+            </h1>
+            <p>
+              {{ slide.description }}
+            </p>
+            <a :href="slide.link" class="btn"
+              ><i class="fa-brands fa-mixcloud mx-2"></i> Explore solutions</a
+            >
+          </div>
+          <div class="col-md-6">
+            <img class="img-fluid" :src="slide.image" alt="slide image" />
+          </div>
         </div>
       </div>
-    </div>
-    <!-- </VueSlickCarousel> -->
+    </VueSlickCarousel>
   </section>
 </template>
 
@@ -38,7 +36,7 @@ import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 import "animate.css/animate.css";
 export default {
   name: "AppHomeIntro",
-  props: ["bannerHead"],
+  props: ["slides"],
   components: {
     VueSlickCarousel,
   },
@@ -49,11 +47,12 @@ export default {
 </script>
 <style lang="scss">
 .intro {
-  padding-top: 0;
+  padding: 0 !important;
+  max-height: 100vh;
+  margin-bottom: 40px;
 }
 .intro .item-1 {
-  background-color: rgba(255, 255, 255, 0);
-  background-image: url("https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/avada-it-clouds1.png");
+  background-color: rgba(255, 255, 255, 0.5);
   background-position: center center;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -61,12 +60,20 @@ export default {
   -o-background-size: cover;
   background-size: cover;
 }
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
 .intro .item .row {
   padding-top: 7vw;
   padding-right: 30px;
-  padding-bottom: 8vw;
+  /* padding-bottom: 8vw; */
   padding-left: 30px;
-  min-height: calc(100vh - 110px);
+  min-height: calc(100vh);
 }
 .intro .item h1 {
   color: #fff;
@@ -74,10 +81,14 @@ export default {
   font-weight: 400;
   line-height: 114px;
   padding-top: 70px;
+  position: relative;
+  z-index: 2;
 }
 
 .intro .item p {
   font-size: 1.5rem !important;
+  position: relative;
+  z-index: 2;
 }
 
 @include xs {
@@ -122,6 +133,8 @@ export default {
   text-transform: uppercase;
   font-family: "Roboto";
   border: none;
+  position: relative;
+  z-index: 2;
 }
 .item .btn:hover {
   justify-content: center;
@@ -149,5 +162,7 @@ export default {
 .slick-active .item img {
   animation: fadeIn;
   animation-duration: 5s;
+  position: relative;
+  z-index: 2;
 }
 </style>

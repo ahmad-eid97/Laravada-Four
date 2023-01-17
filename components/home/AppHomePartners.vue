@@ -52,7 +52,7 @@ export default {
 </script>
 <style>
 .partners {
-  padding: 10px 100px;
+  padding: 0px 100px;
 }
 .partners .owl-carousel {
   margin-bottom: 40px;

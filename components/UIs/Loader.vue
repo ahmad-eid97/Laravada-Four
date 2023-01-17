@@ -21,7 +21,7 @@
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 99999999999999999;
   h4 {
-    opacity: 0.9;
+    opacity: 0.92;
   }
 }
 </style>

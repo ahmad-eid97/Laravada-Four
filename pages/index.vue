@@ -1,9 +1,10 @@
 <template>
   <div class="home">
-    <app-home-intro :bannerHead="bannerHead"></app-home-intro>
+    <app-home-intro :slides="slides"></app-home-intro>
     <app-home-partners :partners="partners"></app-home-partners>
     <app-home-features :features="features"></app-home-features>
     <app-home-activities :activities="activities" />
+    <app-home-steps :steps="steps" />
     <app-home-solutions :solutions="solutions"></app-home-solutions>
     <app-home-banner :latestBlog="latestBlog"></app-home-banner>
     <app-home-sections :services="services"></app-home-sections>
@@ -22,10 +23,17 @@ import AppHomeSolutions from "../components/home/AppHomeSolutions.vue";
 import AppHomeSections from "../components/home/AppHomeSections.vue";
 import AppHomeBottomBanner from "../components/home/AppHomeBottomBanner.vue";
 import AppHomeActivities from "../components/home/AppHomeActivities.vue";
+import AppHomeSteps from "../components/home/AppHomeSteps.vue";
 
 export default {
   name: "Home",
   async asyncData({ $axios, app }) {
+    const slides = await $axios.get("/sliders", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     const bannerHead = await $axios.get("/sections/banner", {
       headers: {
         "Accept-Language": app.i18n.locale,
@@ -62,7 +70,14 @@ export default {
       },
     });
 
+    const steps = await $axios.get("/sections/steps", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     return {
+      slides: slides.data.data.sliders,
       bannerHead: bannerHead.data.data,
       partners: partners.data.data.partners,
       features: features.data.data,
@@ -71,6 +86,7 @@ export default {
       services: services.data.data.services,
       bottomBanner: bottomBanner.data.data,
       activities: activities.data.data,
+      steps: steps.data.data,
     };
   },
   components: {
@@ -82,6 +98,7 @@ export default {
     AppHomeSections,
     AppHomeBottomBanner,
     AppHomeActivities,
+    AppHomeSteps,
   },
 };
 </script>

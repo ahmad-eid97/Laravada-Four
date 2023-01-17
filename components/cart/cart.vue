@@ -90,6 +90,7 @@ export default {
   }
   h2 {
     text-align: center;
+    font-size: 1.5rem;
   }
   .cartItem {
     display: flex;

@@ -194,12 +194,12 @@ header {
     & > i {
       border: 1px solid var(--main-color);
       border-radius: 5px;
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
       display: grid;
       place-items: center;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1rem;
       background-color: var(--main-color);
       color: #fff;
       &:hover {
@@ -209,7 +209,7 @@ header {
     }
     button {
       padding: 5px 30px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       background-color: var(--main-color);
       color: #fff;
       border: 1px solid var(--main-color);
@@ -430,72 +430,6 @@ nav .btn:hover {
   font-family: "Roboto";
   border: none;
 }
-.side-bar {
-  width: 0;
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(243, 245, 246, 0.95);
-  z-index: 9999;
-  transition: all 0.4s ease;
-}
-.side-bar.opend {
-  width: 300px;
-}
-.side-bar .content-wrapper {
-  padding: 60px 30px;
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 100%;
-  scrollbar-width: none;
-}
-.side-bar .content-wrapper .close-btn {
-  position: absolute;
-  top: 20px;
-  right: auto;
-  left: 20px;
-  color: rgb(97, 106, 125);
-  font-size: 20px;
-  cursor: pointer;
-}
-.side-bar .content-wrapper .widget {
-  margin-bottom: 50px;
-}
-.side-bar .content-wrapper h4 {
-  font-family: Roboto;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  line-height: 18px;
-  margin-bottom: 28px;
-  color: rgb(9, 41, 51);
-}
-.side-bar .content-wrapper p {
-  color: rgb(97, 106, 125);
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 30px;
-  margin: 15px 0;
-}
-.side-bar .content-wrapper ul {
-  list-style: none;
-  padding: 0;
-}
-.side-bar .content-wrapper ul li {
-  color: rgb(97, 106, 125);
-  align-items: start;
-  display: flex;
-}
-.side-bar .content-wrapper ul li > div {
-  display: inline-block;
-}
-.side-bar .content-wrapper ul li > div p {
-  margin: -4px 0 0 12px;
-}
 
 .nav-item a.active,
 .dropdownBtn a.active {
@@ -506,8 +440,13 @@ nav .btn:hover {
   color: rgb(98, 57, 189) !important;
 }
 
-.nav-item:hover a.active {
-  color: var(--main-color) !important;
+.nav-item {
+  @include md {
+    &:hover > a,
+    &:hover button {
+      color: #fff !important;
+    }
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -546,9 +485,9 @@ nav .btn:hover {
   }
 }
 .dropdownBtn {
+  background: transparent !important;
   margin: 0 !important;
-  width: 60px;
-  display: flex !important;
+  border: none !important;
   button {
     background: none !important;
     padding: 0 !important;
@@ -558,6 +497,7 @@ nav .btn:hover {
     font-family: unset !important;
     font-weight: 400 !important;
     box-shadow: none !important;
+    min-width: unset !important;
   }
   .dropdown-menu {
     top: 40px !important;
