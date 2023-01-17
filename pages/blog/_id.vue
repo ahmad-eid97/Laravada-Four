@@ -42,9 +42,10 @@ export default {
       },
     });
 
-    const LATEST_BLOGS = await $axios.get(`/blogs/?latest=1`, {
+    const LATEST_BLOGS = await $axios.get(`/blogs?latest=1`, {
       headers: {
         "Accept-Language": app.i18n.locale,
+        Accept: "application/json",
       },
     });
 

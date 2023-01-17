@@ -1,5 +1,8 @@
 <template>
-  <div class="horizontalSteps" v-if="steps.length">
+  <div
+    class="horizontalSteps"
+    v-if="steps.find((one) => one.key === 'steps_list')"
+  >
     <div class="row gx-5 justify-content-center">
       <div
         class="col-md-6 col-lg-4 stepWrapper mb-5"
