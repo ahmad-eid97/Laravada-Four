@@ -4,6 +4,7 @@
       <swiper-slide v-for="partner in partners" :key="partner">
         <div class="item">
           <img class="imgo" :src="partner.image" />
+          <h5>{{ partner.title }}</h5>
         </div>
       </swiper-slide>
     </swiper>
@@ -66,5 +67,8 @@ export default {
   display: inline;
   max-width: 100%;
   /* height: auto; */
+}
+.partners .owl-carousel .item h5 {
+  margin-top: 15px;
 }
 </style>
