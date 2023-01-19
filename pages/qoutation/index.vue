@@ -97,11 +97,10 @@
                   <select
                     name="preferred_method"
                     required
-                    placeholder="here"
                     v-model="preferred_method"
                     :class="!preferred_method && emptyFields ? 'error' : ''"
                   >
-                    <option disabled hidden>select option</option>
+                    <option disabled>select method</option>
                     <option value="email" selected>email</option>
                     <option value="phone">phone</option>
                   </select>
@@ -181,7 +180,7 @@ export default {
       email: "",
       phone_number: "",
       whatsapp_number: "",
-      preferred_method: "",
+      preferred_method: "email",
       form_subtitle: "",
       validEmail: true,
     };
@@ -410,8 +409,7 @@ export default {
 }
 
 input.error,
-textarea.error,
-select.error {
+textarea.error {
   border-color: rgb(255, 101, 101) !important;
 }
 
