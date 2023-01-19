@@ -72,8 +72,8 @@
           <b-nav-item v-if="$store.state.user" @click="logout" class="outLarge">
             Logout
           </b-nav-item>
-          <b-nav-item class="m-0">
-            <a href="#" class="btn">Get started</a>
+          <b-nav-item class="m-0" @click="$router.push('/qoutation')">
+            <a href="/qoutation" class="btn">Get qoutation</a>
           </b-nav-item>
         </b-navbar-nav>
 
@@ -138,13 +138,6 @@ export default {
       this.openCart = false;
       this.$router.push("/checkout");
     },
-    // handleScroll(){
-    //     if(window.pageYOffset>200){
-    //         if(this.topOfPage) this.topOfPage = false
-    //     } else {
-    //         if(!this.topOfPage) this.topOfPage = true
-    // }
-    // }
   },
 };
 </script>

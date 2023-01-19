@@ -30,7 +30,9 @@
           <b-nav-item :to="localePath('/policy')">Privacy Policy</b-nav-item>
           <b-nav-item :to="localePath('/terms')">Terms & Conditions</b-nav-item>
           <b-nav-item class="m-0">
-            <a href="#" class="btn">Get started</a>
+            <a href="/qoutation" class="btn" @click="$router.push('/qoutation')"
+              >Get Qoutation</a
+            >
           </b-nav-item>
           <b-nav-item class="m-0" @click="side = !side">
             <i class="d-lg-block d-none" icon="fa-solid fa-plus"></i>
