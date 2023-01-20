@@ -1,5 +1,6 @@
 <template>
   <footer>
+    <subscribe />
     <b-navbar toggleable="lg">
       <b-navbar-brand href="#">
         <img src="assets/images/logo.png" alt="logoImage" />
@@ -119,9 +120,10 @@
 </template>
 
 <script>
+import Subscribe from "../subscribe/subscribe.vue";
 export default {
   name: "AppFooter",
-  components: {},
+  components: { Subscribe },
   data() {
     return {
       side: false,
