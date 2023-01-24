@@ -40,6 +40,134 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    document
+      .querySelector(".bottom-banner")
+      .style.setProperty(
+        "--bannerBottom-bg",
+        this.bottomBanner.find(
+          (one) => one.key === "banner-bottom_background_active_section"
+        ).value === "color"
+          ? this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_background_color_section"
+            ).value
+          : `url(${
+              this.bottomBanner.find(
+                (one) => one.key === "banner-bottom_background_image_section"
+              ).value
+            })`
+      );
+
+    document
+      .querySelector(".bottom-banner")
+      .style.setProperty(
+        "--bannerBottom-fontSize",
+        `${
+          this.bottomBanner.find(
+            (one) => one.key === "banner-bottom_font_size_section"
+          ).value
+        }px`
+      );
+
+    if (
+      this.bottomBanner.find(
+        (one) => one.key === "banner-bottom_border_position_section"
+      ) &&
+      this.bottomBanner.find(
+        (one) => one.key === "banner-bottom_border_position_section"
+      ).value === "both"
+    ) {
+      document
+        .querySelector(".bottom-banner")
+        .style.setProperty(
+          "--bannerBottom-border-top",
+          `${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_size_section"
+            ).value
+          }px ${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_type_section"
+            ).value
+          } ${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_color_section"
+            ).value
+          }`
+        );
+
+      document
+        .querySelector(".bottom-banner")
+        .style.setProperty(
+          "--bannerBottom-border-bottom",
+          `${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_size_section"
+            ).value
+          }px ${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_type_section"
+            ).value
+          } ${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.bottomBanner.find(
+        (one) => one.key === "banner-bottom_border_position_section"
+      ) &&
+      this.bottomBanner.find(
+        (one) => one.key === "banner-bottom_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".bottom-banner")
+        .style.setProperty(
+          "--bannerBottom-border-top",
+          `${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_size_section"
+            ).value
+          }px ${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_type_section"
+            ).value
+          } ${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.bottomBanner.find(
+        (one) => one.key === "banner-bottom_border_position_section"
+      ) &&
+      this.bottomBanner.find(
+        (one) => one.key === "banner-bottom_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".bottom-banner")
+        .style.setProperty(
+          "--bannerBottom-border-bottom",
+          `${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_size_section"
+            ).value
+          }px ${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_type_section"
+            ).value
+          } ${
+            this.bottomBanner.find(
+              (one) => one.key === "banner-bottom_border_color_section"
+            ).value
+          }`
+        );
+    }
+  },
 };
 </script>
 <style lang="scss">
@@ -48,11 +176,25 @@ export default {
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/avada-it-call-to-action-bg.png");
+  /* background-image: url("https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/avada-it-call-to-action-bg.png"); */
   padding-bottom: 90px;
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 90px;
+
+  --bannerBottom-bg: #fff;
+  --bannerBottom-fontSize: 20px;
+  --bannerBottom-border-top: 0px solid #fff;
+  --bannerBottom-border-bottom: 0px solid #fff;
+
+  background: var(--bannerBottom-bg);
+  border-top: var(--bannerBottom-border-top);
+  border-bottom: var(--bannerBottom-border-bottom);
+  background-repeat: no-repeat;
+  background-size: cover;
+  h2 {
+    font-size: var(--bannerBottom-fontSize);
+  }
 }
 .bottom-banner .title {
   margin: 15px 0;

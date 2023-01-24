@@ -1,5 +1,6 @@
 <template>
   <section class="features">
+    <div class="overlay"></div>
     <div class="row align-items-center">
       <div class="col-lg-6 p-0">
         <div class="feature-inner">
@@ -51,29 +52,6 @@
             </p>
             <div class="line"></div>
           </div>
-          <!-- <div class="box">
-                        <div class="heading">
-                            <a href="#" class="d-flex align-items-center">
-                                <span class="icon"><i icon="fa-solid fa-lock" /></span>
-                                <h2>IT SECURITY</h2>
-                            </a>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore etre.
-                        </p>
-                        <div class="line"></div>
-                    </div>
-                    <div class="box">
-                        <div class="heading">
-                            <a href="#" class="d-flex align-items-center">
-                                <span class="icon"><i icon="fa-solid fa-server" /></span>
-                                <h2>BACKUP AND RECOVERY</h2>
-                            </a>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore etre.
-                        </p>
-                    </div> -->
         </div>
       </div>
     </div>
@@ -88,7 +66,131 @@ export default {
     return {};
   },
   mounted() {
-    console.log(this.features);
+    document
+      .querySelector(".features")
+      .style.setProperty(
+        "--features-bg",
+        this.features.find(
+          (one) => one.key === "features_background_active_section"
+        ).value === "color"
+          ? this.features.find(
+              (one) => one.key === "features_background_color_section"
+            ).value
+          : `url(${
+              this.features.find(
+                (one) => one.key === "features_background_image_section"
+              ).value
+            })`
+      );
+
+    document
+      .querySelector(".features")
+      .style.setProperty(
+        "--features-fontSize",
+        `${
+          this.features.find((one) => one.key === "features_font_size_section")
+            .value
+        }px`
+      );
+
+    if (
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ) &&
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ).value === "both"
+    ) {
+      document
+        .querySelector(".features")
+        .style.setProperty(
+          "--features-border-top",
+          `${
+            this.features.find(
+              (one) => one.key === "features_border_size_section"
+            ).value
+          }px ${
+            this.features.find(
+              (one) => one.key === "features_border_type_section"
+            ).value
+          } ${
+            this.features.find(
+              (one) => one.key === "features_border_color_section"
+            ).value
+          }`
+        );
+
+      document
+        .querySelector(".features")
+        .style.setProperty(
+          "--features-border-bottom",
+          `${
+            this.features.find(
+              (one) => one.key === "features_border_size_section"
+            ).value
+          }px ${
+            this.features.find(
+              (one) => one.key === "features_border_type_section"
+            ).value
+          } ${
+            this.features.find(
+              (one) => one.key === "features_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ) &&
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".features")
+        .style.setProperty(
+          "--features-border-top",
+          `${
+            this.features.find(
+              (one) => one.key === "features_border_size_section"
+            ).value
+          }px ${
+            this.features.find(
+              (one) => one.key === "features_border_type_section"
+            ).value
+          } ${
+            this.features.find(
+              (one) => one.key === "features_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ) &&
+      this.features.find(
+        (one) => one.key === "features_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".features")
+        .style.setProperty(
+          "--features-border-bottom",
+          `${
+            this.features.find(
+              (one) => one.key === "features_border_size_section"
+            ).value
+          }px ${
+            this.features.find(
+              (one) => one.key === "features_border_type_section"
+            ).value
+          } ${
+            this.features.find(
+              (one) => one.key === "features_border_color_section"
+            ).value
+          }`
+        );
+    }
   },
 };
 </script>
@@ -106,7 +208,25 @@ export default {
   border-width: 0px;
   border-style: solid;
   background-size: cover;
-  background-image: url("https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/avada-it-section-bg.png");
+  /* background-image: url("https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/avada-it-section-bg.png"); */
+
+  --features-bg: #fff;
+  --features-fontSize: 20px;
+  --features-border-top: 0px solid #fff;
+  --features-border-bottom: 0px solid #fff;
+
+  background: var(--features-bg);
+  border-top: var(--features-border-top);
+  border-bottom: var(--features-border-bottom);
+  background-repeat: no-repeat;
+  background-size: cover;
+  h2 {
+    font-size: var(--features-fontSize);
+  }
+  .feature-inner {
+    position: relative;
+    z-index: 99;
+  }
 }
 
 .features h2 {
