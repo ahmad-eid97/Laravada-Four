@@ -161,7 +161,7 @@ export default {
       ) &&
       this.solutions.find(
         (one) => one.key === "solutions_border_position_section"
-      ).value === "top"
+      ).value === "bottom"
     ) {
       document
         .querySelector(".solutions")
