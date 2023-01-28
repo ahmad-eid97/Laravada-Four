@@ -3,7 +3,13 @@
     <subscribe />
     <b-navbar toggleable="lg">
       <b-navbar-brand href="#">
-        <img src="assets/images/logo.png" alt="logoImage" />
+        <img
+          :src="
+            $store.state.websiteSettings.find((one) => one.key === 'logo')
+              .plain_value
+          "
+          alt="logoImage"
+        />
       </b-navbar-brand>
 
       <b-navbar-toggle target="navbar-toggle-collapse">
@@ -26,19 +32,12 @@
         is-nav
       >
         <b-navbar-nav class="align-items-center">
-          <b-nav-item :to="localePath('/contact')">Contact</b-nav-item>
-          <b-nav-item :to="localePath('/faq')">FAQs</b-nav-item>
-          <b-nav-item :to="localePath('/policy')">Privacy Policy</b-nav-item>
-          <b-nav-item :to="localePath('/terms')">Terms & Conditions</b-nav-item>
-          <b-nav-item class="m-0">
-            <a href="/qoutation" class="btn" @click="$router.push('/qoutation')"
-              >Get Qoutation</a
-            >
-          </b-nav-item>
-          <b-nav-item class="m-0" @click="side = !side">
-            <i class="d-lg-block d-none" icon="fa-solid fa-plus"></i>
-            <span class="d-lg-none d-block">Side Bar</span>
-          </b-nav-item>
+          <b-nav-item
+            v-for="page in $store.state.footerPages"
+            :key="page.id"
+            :to="localePath(generatePagePath(page.id))"
+            >{{ page.name }}</b-nav-item
+          >
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -127,9 +126,26 @@ export default {
   data() {
     return {
       side: false,
+      contact_status: 0,
+      contact_status2: 1,
+      contact_status3: 0,
+      contact_status4: 1,
     };
   },
-  methods: {},
+  methods: {
+    generatePagePath(id) {
+      switch (id) {
+        case 1:
+          return "/about";
+        case 2:
+          return "/contact";
+        case 3:
+          return "/terms";
+        case 4:
+          return "/policy";
+      }
+    },
+  },
   mounted() {},
 };
 </script>
