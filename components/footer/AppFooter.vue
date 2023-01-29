@@ -32,77 +32,16 @@
         is-nav
       >
         <b-navbar-nav class="align-items-center">
-          <b-nav-item
-            v-for="page in $store.state.footerPages"
-            :key="page.id"
-            :to="localePath(generatePagePath(page.id))"
-            >{{ page.name }}</b-nav-item
-          >
+          <li v-for="page in $store.state.footerPages" :key="page.id">
+            <b-nav-item
+              :to="localePath(generatePagePath(page.id))"
+              v-if="page.status"
+              >{{ page.name }}</b-nav-item
+            >
+          </li>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <div :class="side ? 'opend' : ''" class="side-bar">
-      <div class="content-wrapper">
-        <div class="close-btn">
-          <i icon="fa-solid fa-xmark" @click="side = !side"></i>
-        </div>
-        <div class="widge">
-          <h4>LARAVADA</h4>
-          <p>
-            Fusce ut ipsum tincidunt, porta nisl sollicitudin, vulputate nunc.
-            Cras commodo leo ac nunc convallis ets efficitur.
-          </p>
-        </div>
-        <div class="widge">
-          <img
-            class="img-fluid"
-            src="https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/cloud-2-300x216.png"
-            alt=""
-          />
-        </div>
-
-        <div class="widge">
-          <h4>RECENT TWEETS</h4>
-        </div>
-        <div class="widge">
-          <h4>CONTACT US</h4>
-          <ul>
-            <li>
-              <span>
-                <i icon="fa-solid fa-house-chimney"></i>
-              </span>
-              <div>
-                <p>12345 North Main Street,<br />New York, NY 555555</p>
-              </div>
-            </li>
-            <li>
-              <span>
-                <i icon="fa-solid fa-phone"></i>
-              </span>
-              <div>
-                <p>+11111111111111</p>
-              </div>
-            </li>
-            <li>
-              <span>
-                <i icon="fa-solid fa-envelope"></i>
-              </span>
-              <div>
-                <p>
-                  {{
-                    $store.state.websiteSettings.find(
-                      (one) => one.key === "email"
-                    ).plain_value
-                  }}
-                </p>
-              </div>
-            </li>
-          </ul>
-
-          <!-- :href="`https://${$store.state.footerData.facebook}`" target="_blank" -->
-        </div>
-      </div>
-    </div>
     <div class="row mx-0 justify-content-center">
       <div class="col-12 copyright">
         <p>
@@ -126,10 +65,6 @@ export default {
   data() {
     return {
       side: false,
-      contact_status: 0,
-      contact_status2: 1,
-      contact_status3: 0,
-      contact_status4: 1,
     };
   },
   methods: {
