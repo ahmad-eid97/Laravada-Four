@@ -493,9 +493,9 @@ export default {
   border: 1px solid #fff;
   margin-bottom: 10px;
   text-align: center;
-  position: absolute;
+  /* position: absolute;
   left: 0;
-  top: 0;
+  top: 0; */
 }
 .contact-info ul li .content h3 {
   font-size: 18px;
@@ -538,9 +538,9 @@ export default {
   position: relative;
 }
 .contact-form .agree-label input#chb1 {
-  position: absolute;
+  /* position: absolute;
   top: 5px;
-  left: 0;
+  left: 0; */
   width: auto;
   height: auto;
 }
