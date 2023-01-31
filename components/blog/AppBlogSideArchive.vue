@@ -73,7 +73,7 @@ export default {
   display: inline-block;
   color: #444;
   font-weight: 400;
-  padding: 5px 0 5px 25px;
+  padding: 5px 0;
   font-weight: 600;
   position: relative;
   width: 100%;
