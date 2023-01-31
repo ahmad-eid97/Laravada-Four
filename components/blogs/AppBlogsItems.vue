@@ -17,7 +17,7 @@
         >
           <div class="blog-card">
             <div class="blog-img">
-              <router-link to="blog">
+              <nuxt-link to="blog">
                 <img
                   v-if="!blog.image"
                   src="/assets/images/noImage.png"
@@ -29,25 +29,26 @@
                   alt="Blog Image"
                   @error="setAltImg"
                 />
-              </router-link>
+              </nuxt-link>
               <div class="blog-tag">
                 <h3>{{ $date(new Date(blog.publish_date), "dd") }}</h3>
                 <span>{{ $date(new Date(blog.publish_date), "MMM") }}</span>
               </div>
             </div>
             <h3 class="title">
-              <router-link to="blog">{{ blog.title }}</router-link>
+              <nuxt-link to="blog">{{ blog.title }}</nuxt-link>
             </h3>
             <div class="content">
               <ul>
                 <li>
-                  <a href="#"
-                    ><i class="fa-regular fa-user"></i>By {{ blog.username }}</a
+                  <nuxt-link to="#"
+                    ><i class="fa-regular fa-user"></i>By
+                    {{ blog.username }}</nuxt-link
                   >
                 </li>
                 <li>
-                  <a href="index.html"
-                    ><i class="fa-solid fa-tag"></i> Business</a
+                  <nuxt-link to="index.html"
+                    ><i class="fa-solid fa-tag"></i> Business</nuxt-link
                   >
                 </li>
               </ul>

@@ -14,7 +14,7 @@
             {{ latestBlog.short_description }}
           </p>
           <div class="btn-container d-flex justify-content-end">
-            <nuxt-link :to="`/blog/${latestBlog[0].id}`"
+            <nuxt-link :to="localePath(`/blog/${latestBlog[0].id}`)"
               >Read More <i class="fa-solid fa-angle-right"></i
             ></nuxt-link>
           </div>

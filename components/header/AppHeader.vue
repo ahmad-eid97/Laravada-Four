@@ -73,7 +73,9 @@
             Logout
           </b-nav-item>
           <b-nav-item class="m-0" @click="$router.push('/qoutation')">
-            <a href="/qoutation" class="btn">Get qoutation</a>
+            <nuxt-link :to="localePath('/qoutation')" class="btn"
+              >Get qoutation</nuxt-link
+            >
           </b-nav-item>
         </b-navbar-nav>
 

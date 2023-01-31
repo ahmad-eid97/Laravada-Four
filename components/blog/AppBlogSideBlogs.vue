@@ -13,9 +13,9 @@
         </a>
         <div class="info">
           <h4 class="title-text">
-            <a href="#" target="_blank">
+            <nuxt-link to="#" target="_blank">
               {{ blog.title }}
-            </a>
+            </nuxt-link>
           </h4>
           <p>{{ blog.publish_date }}</p>
         </div>

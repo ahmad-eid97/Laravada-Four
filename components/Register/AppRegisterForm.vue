@@ -81,7 +81,7 @@
                   <div class="col-12">
                     <p class="account-desc">
                       Already have an account?
-                      <router-link to="login">Log In</router-link>
+                      <nuxt-link to="login">Log In</nuxt-link>
                     </p>
                   </div>
                 </div>

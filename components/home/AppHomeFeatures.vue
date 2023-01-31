@@ -42,10 +42,10 @@
             class="box"
           >
             <div class="heading">
-              <a href="#" class="d-flex align-items-center">
+              <nuxt-link to="#" class="d-flex align-items-center">
                 <span class="icon"><i :class="feature.icon"></i></span>
                 <h2>{{ feature.title }}</h2>
-              </a>
+              </nuxt-link>
             </div>
             <p>
               {{ feature.description }}

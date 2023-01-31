@@ -19,7 +19,7 @@
               <i :class="service.icon"></i>
             </div>
             <h3>
-              <a href="#">{{ service.title }}</a>
+              <nuxt-link to="#">{{ service.title }}</nuxt-link>
             </h3>
             <p>{{ service.short_description }}</p>
           </div>

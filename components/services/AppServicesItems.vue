@@ -26,13 +26,13 @@
               <i :class="service.icon"></i>
             </div>
             <h3>
-              <router-link to="service">{{ service.title }}</router-link>
+              <nuxt-link to="service">{{ service.title }}</nuxt-link>
             </h3>
             <p>{{ service.short_description }}</p>
-            <router-link to="service" class="learn-btn"
+            <nuxt-link to="service" class="learn-btn"
               >Learn More
               <i class="bx bx-chevron-right"></i>
-            </router-link>
+            </nuxt-link>
           </div>
         </div>
       </div>

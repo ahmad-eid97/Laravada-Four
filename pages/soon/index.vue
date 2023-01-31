@@ -51,24 +51,24 @@
             </form>
             <ul class="header-content-right">
               <li>
-                <a href="https://www.facebook.com/" target="_blank">
+                <nuxt-link to="https://www.facebook.com/" target="_blank">
                   <i class="fa-brands fa-facebook-f"></i>
-                </a>
+                </nuxt-link>
               </li>
               <li>
-                <a href="https://twitter.com/?lang=en" target="_blank">
+                <nuxt-link to="https://twitter.com/?lang=en" target="_blank">
                   <i class="fa-brands fa-twitter"></i>
-                </a>
+                </nuxt-link>
               </li>
               <li>
-                <a href="https://www.linkedin.com/" target="_blank">
+                <nuxt-link to="https://www.linkedin.com/" target="_blank">
                   <i class="fa-brands fa-linkedin-in"></i>
-                </a>
+                </nuxt-link>
               </li>
               <li>
-                <a href="https://www.instagram.com/" target="_blank">
+                <nuxt-link to="https://www.instagram.com/" target="_blank">
                   <i class="fa-brands fa-instagram"></i>
-                </a>
+                </nuxt-link>
               </li>
             </ul>
           </div>

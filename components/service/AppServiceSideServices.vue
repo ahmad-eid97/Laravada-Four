@@ -8,7 +8,7 @@
           :key="feature"
         >
           <i class="fa-solid fa-circle-dot"></i>
-          <a href="#" target="_blank">{{ feature }}</a>
+          <nuxt-link to="#" target="_blank">{{ feature }}</nuxt-link>
         </li>
       </ul>
     </div>

@@ -34,7 +34,7 @@
             <ul v-if="blogDetails.tags.length >= 1">
               <li><i class="bx bx-purchase-tag-alt"></i> Tags:</li>
               <li v-for="tag in blogDetails.tags.slice(0, 5)" :key="tag">
-                <a href="#">{{ tag.name }}</a>
+                <nuxt-link to="#">{{ tag.name }}</nuxt-link>
               </li>
             </ul>
           </div>
@@ -42,24 +42,24 @@
         <div class="col-lg-5 col-sm-5 col-md-5">
           <ul class="social-icon">
             <li>
-              <a href="https://www.facebook.com/" target="_blank">
+              <nuxt-link to="https://www.facebook.com/" target="_blank">
                 <i class="fa-brands fa-facebook-f"></i>
-              </a>
+              </nuxt-link>
             </li>
             <li>
-              <a href="https://twitter.com/?lang=en" target="_blank">
+              <nuxt-link to="https://twitter.com/?lang=en" target="_blank">
                 <i class="fa-brands fa-twitter"></i>
-              </a>
+              </nuxt-link>
             </li>
             <li>
-              <a href="https://www.linkedin.com/" target="_blank">
+              <nuxt-link to="https://www.linkedin.com/" target="_blank">
                 <i class="fa-brands fa-linkedin-in"></i>
-              </a>
+              </nuxt-link>
             </li>
             <li>
-              <a href="https://www.instagram.com/" target="_blank">
+              <nuxt-link to="https://www.instagram.com/" target="_blank">
                 <i class="fa-brands fa-instagram"></i>
-              </a>
+              </nuxt-link>
             </li>
           </ul>
         </div>
@@ -77,7 +77,7 @@
           <p>
             {{ comment.content }}
           </p>
-          <a href="#"> Reply</a>
+          <nuxt-link to="#"> Reply</nuxt-link>
         </li>
       </ul>
     </div>

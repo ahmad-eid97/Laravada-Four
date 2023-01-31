@@ -48,8 +48,8 @@
           © Copyright 2023&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Laravada
           Theme&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;All Rights
           Reserved&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Powered by
-          <a href="http://wordpress.org" target="_blank" rel="noreferrer"
-            >Rail Coder</a
+          <nuxt-link to="http://wordpress.org" target="_blank" rel="noreferrer"
+            >Rail Coder</nuxt-link
           >
         </p>
       </div>

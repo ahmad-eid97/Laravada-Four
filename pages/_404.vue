@@ -9,9 +9,9 @@
             The page you are looking for might have been removed had its name
             changed or is temporarily unavailable.
           </p>
-          <router-link to="" class="btn btn-primary">
+          <nuxt-link to="" class="btn btn-primary">
             Return To Home Page
-          </router-link>
+          </nuxt-link>
         </div>
       </div>
     </div>

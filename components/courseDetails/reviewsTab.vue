@@ -20,15 +20,15 @@
 
       <div class="col-lg-12 col-md-12 text-center">
         <div class="pagination-area">
-          <a href="#" class="page-numbers">
+          <nuxt-link to="#" class="page-numbers">
             <i class="fa-solid fa-arrow-left"></i>
-          </a>
+          </nuxt-link>
           <span class="page-numbers current" aria-current="page">1</span>
-          <a href="#" class="page-numbers">2</a>
-          <a href="#" class="page-numbers">3</a>
-          <a href="#" class="page-numbers">
+          <nuxt-link to="#" class="page-numbers">2</nuxt-link>
+          <nuxt-link to="#" class="page-numbers">3</nuxt-link>
+          <nuxt-link to="#" class="page-numbers">
             <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          </nuxt-link>
         </div>
       </div>
     </div>

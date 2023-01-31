@@ -22,11 +22,11 @@
                   <i class="bx bx-phone-call"></i>
                   <div class="contentInnner">
                     <h3>Phone Number</h3>
-                    <a href="tel:+1(212)-255-5511">{{
+                    <nuxt-link to="tel:+1(212)-255-5511">{{
                       $store.state.websiteSettings.find(
                         (one) => one.key === "contact_phone"
                       ).plain_value
-                    }}</a>
+                    }}</nuxt-link>
                   </div>
                 </div>
               </li>
@@ -37,11 +37,11 @@
                   </div>
                   <div class="contentInnner">
                     <h3>Address</h3>
-                    <a href="#">{{
+                    <nuxt-link to="#">{{
                       $store.state.websiteSettings.find(
                         (one) => one.key === "contact_address"
                       ).plain_value
-                    }}</a>
+                    }}</nuxt-link>
                   </div>
                 </div>
               </li>
@@ -52,11 +52,11 @@
                   </div>
                   <div class="contentInnner">
                     <h3>Contact Info</h3>
-                    <a href="mailto:hello@techex.com">{{
+                    <nuxt-link to="mailto:hello@techex.com">{{
                       $store.state.websiteSettings.find(
                         (one) => one.key === "contact_email"
                       ).plain_value
-                    }}</a>
+                    }}</nuxt-link>
                   </div>
                 </div>
               </li>
@@ -180,8 +180,13 @@
                     <input type="checkbox" id="chb1" />
                     <label for="chb1">
                       Accept
-                      <a href="terms-condition.html">Terms &amp; Conditions</a>
-                      And <a href="privacy-policy.html">Privacy Policy.</a>
+                      <nuxt-link to="terms-condition.html"
+                        >Terms &amp; Conditions</nuxt-link
+                      >
+                      And
+                      <nuxt-link to="privacy-policy.html"
+                        >Privacy Policy.</nuxt-link
+                      >
                     </label>
                   </div>
                 </div>
