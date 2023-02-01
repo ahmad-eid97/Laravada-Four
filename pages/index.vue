@@ -2,15 +2,25 @@
   <div class="home">
     <app-home-intro :slides="slides"></app-home-intro>
     <app-home-partners :partners="partners"></app-home-partners>
-    <app-home-features :features="features"></app-home-features>
-    <app-home-activities :activities="activities" />
-    <app-home-steps :steps="steps" />
-    <app-home-solutions :solutions="solutions"></app-home-solutions>
+    <div v-if="features.status">
+      <app-home-features :features="features.data"></app-home-features>
+    </div>
+    <div v-if="activities.status">
+      <app-home-activities :activities="activities.data" />
+    </div>
+    <div v-if="steps.status">
+      <app-home-steps :steps="steps.data" />
+    </div>
+    <div v-if="solutions.status">
+      <app-home-solutions :solutions="solutions.data"></app-home-solutions>
+    </div>
     <app-home-banner :latestBlog="latestBlog"></app-home-banner>
     <app-home-sections :services="services"></app-home-sections>
-    <app-home-bottom-banner
-      :bottomBanner="bottomBanner"
-    ></app-home-bottom-banner>
+    <div v-if="bottomBanner.status">
+      <app-home-bottom-banner
+        :bottomBanner="bottomBanner.data"
+      ></app-home-bottom-banner>
+    </div>
     <SocialChat :attendants="attendants">
       <p slot="header">Click one of our representatives below to chat.</p>
       <template v-slot:button="{ open }">
@@ -98,12 +108,6 @@ export default {
       },
     });
 
-    const bannerHead = await $axios.get("/sections/banner", {
-      headers: {
-        "Accept-Language": app.i18n.locale,
-      },
-    });
-
     const partners = await $axios.get("/partners");
 
     const features = await $axios.get("/sections/features", {
@@ -142,15 +146,14 @@ export default {
 
     return {
       slides: slides.data.data.sliders,
-      bannerHead: bannerHead.data.data,
       partners: partners.data.data.partners,
-      features: features.data.data,
-      solutions: solutions.data.data,
+      features: features.data,
+      solutions: solutions.data,
       latestBlog: latestBlog.data.data.blogs.slice(0, 1),
       services: services.data.data.services,
-      bottomBanner: bottomBanner.data.data,
-      activities: activities.data.data,
-      steps: steps.data.data,
+      bottomBanner: bottomBanner.data,
+      activities: activities.data,
+      steps: steps.data,
     };
   },
   components: {
