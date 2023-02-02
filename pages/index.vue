@@ -2,21 +2,21 @@
   <div class="home">
     <app-home-intro :slides="slides"></app-home-intro>
     <app-home-partners :partners="partners"></app-home-partners>
-    <div v-if="features.status">
+    <div v-if="$store.state.sectionsStatus.features">
       <app-home-features :features="features.data"></app-home-features>
     </div>
-    <div v-if="activities.status">
+    <div v-if="$store.state.sectionsStatus.activities">
       <app-home-activities :activities="activities.data" />
     </div>
-    <div v-if="steps.status">
+    <div v-if="$store.state.sectionsStatus.steps">
       <app-home-steps :steps="steps.data" />
     </div>
-    <div v-if="solutions.status">
+    <div v-if="$store.state.sectionsStatus.solutions">
       <app-home-solutions :solutions="solutions.data"></app-home-solutions>
     </div>
     <app-home-banner :latestBlog="latestBlog"></app-home-banner>
     <app-home-sections :services="services"></app-home-sections>
-    <div v-if="bottomBanner.status">
+    <div v-if="$store.state.sectionsStatus['banner-bottom']">
       <app-home-bottom-banner
         :bottomBanner="bottomBanner.data"
       ></app-home-bottom-banner>
